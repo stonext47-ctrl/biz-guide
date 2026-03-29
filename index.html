@@ -306,7 +306,12 @@ body {
 .entry:hover { box-shadow: var(--shadow-lg); }
 .entry-head {
   padding: 24px 28px 18px;
+  padding-right: 40px;
   border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
 }
 .entry-person {
   font-family: var(--font-display);
@@ -399,15 +404,27 @@ body {
 /* 原文引用 */
 .quotes { margin-bottom: 24px; }
 blockquote {
-  background: var(--surface-warm);
+  background: #e8e2d4;
   border-left: 3px solid var(--gold);
-  padding: 14px 18px;
+  padding: 18px 20px 18px 40px;
   margin: 0 0 10px;
   border-radius: 0 var(--r-sm) var(--r-sm) 0;
   font-size: 13.5px;
   color: var(--ink-soft);
   line-height: 1.8;
   font-style: italic;
+  position: relative;
+}
+blockquote::before {
+  content: '\201C';
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  font-size: 32px;
+  font-family: Georgia, serif;
+  color: var(--gold);
+  opacity: 0.5;
+  line-height: 1;
 }
 blockquote cite {
   display: block;
@@ -430,10 +447,30 @@ blockquote cite {
 .insight-box.content-ins {
   background: var(--teal-bg);
   border: 1px solid rgba(26,107,90,0.1);
+  padding-left: 40px;
+  position: relative;
+}
+.insight-box.content-ins::before {
+  content: '\1F4A1';
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  font-size: 16px;
+  line-height: 1;
 }
 .insight-box.afu-ins {
   background: var(--accent-glow);
   border: 1px solid rgba(192,88,42,0.1);
+  padding-left: 40px;
+  position: relative;
+}
+.insight-box.afu-ins::before {
+  content: '\1F3AF';
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  font-size: 16px;
+  line-height: 1;
 }
 
 /* 交叉引用 */
@@ -465,19 +502,200 @@ blockquote cite {
 
 /* ========== 响应式 ========== */
 @media (max-width: 640px) {
-  .topbar { padding: 0 14px; }
-  .topbar-title { font-size: 12px; }
+  .topbar { padding: 0 14px; padding-left: env(safe-area-inset-left, 14px); padding-right: env(safe-area-inset-right, 14px); }
+  .topbar-title { font-size: 13px; }
   .cover { padding: 80px 0 36px; }
   .scene-header { padding: 24px 22px; border-radius: var(--r-md); }
-  .entry-head { padding: 18px 18px 14px; }
+  .entry-head { padding: 18px 18px 14px; padding-right: 36px; }
   .entry-body { padding: 18px 18px 22px; }
-  blockquote { padding: 12px 14px; }
+  blockquote { padding: 14px 14px 14px 36px; }
+  /* 确保文字不会太小——最小 13px */
+  .point-item { font-size: 13.5px; }
+  blockquote { font-size: 13px; }
+  .insight-box { font-size: 13px; }
+  .entry-link { font-size: 12px; }
+  /* 目录抽屉适配小屏 */
+  .toc-drawer { width: 85vw; max-width: 85vw; padding: 24px 18px 40px; }
+  .toc-articles li a { font-size: 12px; padding: 5px 0; }
+  /* 搜索框 */
+  .search-bar { padding: 8px 14px; }
+  .search-input { font-size: 16px; /* 防止 iOS 放大 */ }
+  .search-bar-icon { left: 26px; }
 }
+
+/* ========== 安全区域适配（iPhone 刘海屏） ========== */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .topbar {
+    padding-top: env(safe-area-inset-top);
+    height: calc(56px + env(safe-area-inset-top));
+  }
+  html { scroll-padding-top: calc(64px + env(safe-area-inset-top)); }
+  .search-bar { top: calc(56px + env(safe-area-inset-top)); }
+  .cover { padding-top: calc(120px + env(safe-area-inset-top)); }
+  .page-footer { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
+  .back-to-top { bottom: calc(28px + env(safe-area-inset-bottom)); }
+}
+
+/* ========== 可点击元素最小触摸区域 ========== */
+.toc-btn { min-height: 44px; min-width: 44px; }
+.toc-drawer a { min-height: 44px; display: flex; align-items: center; }
+.toc-drawer-close { min-width: 44px; min-height: 44px; }
+.entry-link { display: inline-block; min-height: 44px; line-height: 44px; }
+.xref { min-height: 44px; line-height: 38px; }
+.back-to-top { min-width: 44px; min-height: 44px; }
+
+/* ========== 折叠功能 ========== */
+.entry-head::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transition: transform 0.3s;
+}
+.entry.collapsed .entry-head::after {
+  transform: translateY(-50%) rotate(-45deg);
+}
+.entry.collapsed .entry-body {
+  display: none;
+}
+/* 场景文章计数 */
+.scene-article-count {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 10px;
+  position: relative;
+}
+/* 搜索框 */
+.search-bar {
+  position: sticky;
+  top: 56px;
+  z-index: 900;
+  background: rgba(244,241,236,0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.search-input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--card);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+.search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.search-bar-icon {
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  fill: var(--text-muted);
+  pointer-events: none;
+}
+.search-bar { position: relative; }
+.search-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 4px 0 0;
+  display: none;
+}
+.search-count.active { display: block; }
+/* 目录抽屉内文章标题列表 */
+.toc-articles {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 4px 28px;
+}
+.toc-articles li a {
+  display: block;
+  color: #889;
+  font-size: 12.5px;
+  padding: 4px 0;
+  border-bottom: none;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.toc-articles li a:hover { color: var(--accent); }
+
+/* ========== 场景卡片左边框颜色区分 ========== */
+#scene-1 .entry { border-left: 4px solid var(--accent); }
+#scene-2 .entry { border-left: 4px solid var(--teal); }
+#scene-3 .entry { border-left: 4px solid var(--blue); }
+#scene-4 .entry { border-left: 4px solid var(--gold); }
+#scene-5 .entry { border-left: 4px solid var(--rose); }
+#scene-6 .entry { border-left: 4px solid var(--purple); }
+#scene-7 .entry { border-left: 4px solid var(--olive); }
+#scene-8 .entry { border-left: 4px solid var(--steel); }
+
+/* 内容完整性标注 */
+.content-missing {
+  display: inline-block;
+  background: #fff3e0;
+  color: #e65100;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  padding: 2px 10px;
+  border-radius: 4px;
+  border: 1px dashed #ffb74d;
+  margin-top: 6px;
+}
+
+/* 回到顶部按钮 */
+.back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 20px;
+  z-index: 999;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.2s;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.back-to-top:active { transform: scale(0.92); }
+.back-to-top svg { width: 18px; height: 18px; fill: currentColor; }
 
 /* ========== 打印优化 ========== */
 @media print {
-  .topbar, .toc-overlay, .toc-drawer { display: none !important; }
+  .topbar, .toc-overlay, .toc-drawer, .search-bar, .back-to-top { display: none !important; }
   .entry { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+  .entry.collapsed .entry-body { display: block !important; }
   .scene-header { break-after: avoid; }
   body { font-size: 13px; }
 }
@@ -499,15 +717,15 @@ blockquote cite {
 <nav class="toc-drawer" id="tocDrawer">
   <button class="toc-drawer-close" onclick="toggleToc()">&times;</button>
   <h2>8个场景导航</h2>
-  <a href="#scene-1" onclick="toggleToc()"><span class="toc-scene-num">01</span> 怎么写出好内容？</a>
-  <a href="#scene-2" onclick="toggleToc()"><span class="toc-scene-num">02</span> 用户为什么不体检？怎么说服？</a>
-  <a href="#scene-3" onclick="toggleToc()"><span class="toc-scene-num">03</span> 品牌应该讲什么？</a>
-  <a href="#scene-4" onclick="toggleToc()"><span class="toc-scene-num">04</span> 怎么选KOL / 怎么做增长？</a>
-  <a href="#scene-5" onclick="toggleToc()"><span class="toc-scene-num">05</span> 怎么定价 / 设计体检套餐？</a>
-  <a href="#scene-6" onclick="toggleToc()"><span class="toc-scene-num">06</span> 怎么带团队？</a>
-  <a href="#scene-7" onclick="toggleToc()"><span class="toc-scene-num">07</span> AI会怎么改变健康行业？</a>
-  <a href="#scene-8" onclick="toggleToc()"><span class="toc-scene-num">08</span> 怎么做长期有价值的事？</a>
+  <div id="tocContent"></div>
 </nav>
+
+<!-- 搜索框 -->
+<div class="search-bar" id="searchBar" style="position:sticky;top:56px;z-index:900;">
+  <svg class="search-bar-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+  <input class="search-input" id="searchInput" type="text" placeholder="搜索文章标题、作者或关键词..." autocomplete="off">
+  <div class="search-count" id="searchCount"></div>
+</div>
 
 <div class="main">
 
@@ -1027,6 +1245,7 @@ blockquote cite {
       <blockquote>"Using AI effectively is now a fundamental expectation of everyone at Shopify."<cite>——Tobi Lutke, 2025.04</cite></blockquote>
     </div>
     <p style="margin-top:8px;font-size:13px;color:var(--text-muted);">Tobi 的 AI 组织变革详见 <a class="xref" href="#scene-7">场景七：AI改变健康行业</a>；团队管理详见 <a class="xref" href="#scene-6">场景六</a></p>
+    <div style="margin-top:10px;"><span class="content-missing">待补充启发</span></div>
   </div>
 </article>
 
@@ -1604,6 +1823,7 @@ blockquote cite {
   <div class="entry-head">
     <div class="entry-person c4">纳瓦尔 Naval Ravikant</div>
     <h3>如何不靠运气致富（长期复利视角）</h3>
+    <span class="content-missing">待补充链接</span>
   </div>
   <div class="entry-body">
     <p style="font-size:13px;color:var(--text-muted);">纳瓦尔的完整杠杆理论和专属知识详见 <a class="xref" href="#scene-4">场景四：增长策略</a>。此处仅摘取与长期主义最相关的部分。</p>
@@ -1612,6 +1832,7 @@ blockquote cite {
       <div class="point-item"><strong>阿福的内容资产应被视为"媒体杠杆"而非"营销成本"：</strong>每条内容都在累积品牌的复利资产。</div>
       <div class="point-item"><strong>第四种运气（让运气主动找上来）对应品牌建设的最高目标：</strong>让用户主动搜索阿福，而非被动被推荐。</div>
     </div>
+    <div style="margin-top:10px;"><span class="content-missing">待补充启发</span></div>
   </div>
 </article>
 
@@ -1671,6 +1892,7 @@ blockquote cite {
   <div class="entry-head">
     <div class="entry-person c7">贝索斯 Jeff Bezos</div>
     <h3>Amazon 1997股东信：长期主义与飞轮效应</h3>
+    <span class="content-missing">待补充链接</span>
   </div>
   <div class="entry-body">
     <p style="font-size:13px;color:var(--text-muted);">贝索斯的品牌哲学详见 <a class="xref" href="#scene-3">场景三：品牌应该讲什么</a>。此处聚焦飞轮效应。</p>
@@ -1680,6 +1902,7 @@ blockquote cite {
       <div class="point-item"><strong>现金流优先于会计利润：</strong>"When forced to choose between optimizing GAAP accounting and maximizing the present value of future cash flows, we'll take the cash flows."</div>
       <div class="point-item"><strong>体检内容应追求"口碑即增长"：</strong>一篇真正帮用户看懂报告的文章，胜过十篇泛泛的科普。</div>
     </div>
+    <div style="margin-top:10px;"><span class="content-missing">待补充启发</span></div>
   </div>
 </article>
 
@@ -1688,6 +1911,7 @@ blockquote cite {
   <div class="entry-head">
     <div class="entry-person c8">段永平</div>
     <h3>"更健康更长久"而非更大</h3>
+    <span class="content-missing">待补充链接</span>
   </div>
   <div class="entry-body">
     <p style="font-size:13px;color:var(--text-muted);">段永平的完整方法论详见 <a class="xref" href="#scene-3">场景三：品牌应该讲什么</a>。此处仅补充长期主义视角。</p>
@@ -1695,6 +1919,7 @@ blockquote cite {
     <div class="points">
       <div class="point-item"><strong>追求"更健康、更长久"而非更大：</strong>增长策略应优先追求用户留存和口碑复利，而非短期流量爆发。</div>
     </div>
+    <div style="margin-top:10px;"><span class="content-missing">待补充启发</span></div>
   </div>
 </article>
 
@@ -1710,11 +1935,121 @@ blockquote cite {
 
 </div><!-- /.main -->
 
+<!-- 回到顶部按钮 -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
+
 <script>
+/* 目录抽屉 */
 function toggleToc() {
   document.getElementById('tocOverlay').classList.toggle('open');
   document.getElementById('tocDrawer').classList.toggle('open');
 }
+
+/* 文章卡片折叠功能——默认折叠，点击展开/收起 */
+document.addEventListener('DOMContentLoaded', function() {
+  // 默认折叠所有文章卡片
+  document.querySelectorAll('.entry').forEach(function(entry) {
+    entry.classList.add('collapsed');
+  });
+  // 点击 entry-head 切换折叠
+  document.querySelectorAll('.entry-head').forEach(function(head) {
+    head.addEventListener('click', function() {
+      this.closest('.entry').classList.toggle('collapsed');
+    });
+  });
+  // 场景文章计数
+  document.querySelectorAll('.scene').forEach(function(scene) {
+    var count = scene.querySelectorAll('.entry').length;
+    var header = scene.querySelector('.scene-header');
+    if (header) {
+      var badge = document.createElement('div');
+      badge.className = 'scene-article-count';
+      badge.textContent = '本场景 ' + count + ' 篇文章';
+      header.appendChild(badge);
+    }
+  });
+  // 生成带文章标题的目录
+  var tocHtml = '';
+  var sceneData = [
+    {id:'scene-1',num:'01',name:'怎么写出好内容？'},
+    {id:'scene-2',num:'02',name:'用户为什么不体检？怎么说服？'},
+    {id:'scene-3',num:'03',name:'品牌应该讲什么？'},
+    {id:'scene-4',num:'04',name:'怎么选KOL / 怎么做增长？'},
+    {id:'scene-5',num:'05',name:'怎么定价 / 设计体检套餐？'},
+    {id:'scene-6',num:'06',name:'怎么带团队？'},
+    {id:'scene-7',num:'07',name:'AI会怎么改变健康行业？'},
+    {id:'scene-8',num:'08',name:'怎么做长期有价值的事？'}
+  ];
+  sceneData.forEach(function(s) {
+    tocHtml += '<a href="#' + s.id + '" onclick="toggleToc()"><span class="toc-scene-num">' + s.num + '</span> ' + s.name + '</a>';
+    var sceneEl = document.getElementById(s.id);
+    if (sceneEl) {
+      var articles = sceneEl.querySelectorAll('.entry h3');
+      if (articles.length > 0) {
+        tocHtml += '<ul class="toc-articles">';
+        articles.forEach(function(h3) {
+          var entry = h3.closest('.entry');
+          var entryId = 'entry-' + s.id + '-' + Array.prototype.indexOf.call(sceneEl.querySelectorAll('.entry'), entry);
+          entry.id = entryId;
+          // 截断过长标题
+          var title = h3.textContent.length > 30 ? h3.textContent.substring(0, 30) + '...' : h3.textContent;
+          tocHtml += '<li><a href="#' + entryId + '" onclick="toggleToc();document.getElementById(\'' + entryId + '\').classList.remove(\'collapsed\')">' + title + '</a></li>';
+        });
+        tocHtml += '</ul>';
+      }
+    }
+  });
+  document.getElementById('tocContent').innerHTML = tocHtml;
+
+  // 搜索功能——实时过滤文章卡片
+  var searchInput = document.getElementById('searchInput');
+  var searchCount = document.getElementById('searchCount');
+  searchInput.addEventListener('input', function() {
+    var keyword = this.value.trim().toLowerCase();
+    var entries = document.querySelectorAll('.entry');
+    var scenes = document.querySelectorAll('.scene');
+    if (!keyword) {
+      entries.forEach(function(e) { e.style.display = ''; });
+      scenes.forEach(function(s) { s.style.display = ''; });
+      searchCount.classList.remove('active');
+      return;
+    }
+    var matched = 0;
+    entries.forEach(function(e) {
+      var head = e.querySelector('.entry-head');
+      var text = head ? head.textContent.toLowerCase() : '';
+      // 同时搜索 body 的前200字
+      var body = e.querySelector('.entry-body');
+      if (body) text += ' ' + body.textContent.substring(0, 400).toLowerCase();
+      if (text.indexOf(keyword) !== -1) {
+        e.style.display = '';
+        e.classList.remove('collapsed'); // 自动展开匹配的卡片
+        matched++;
+      } else {
+        e.style.display = 'none';
+      }
+    });
+    // 隐藏没有可见文章的场景
+    scenes.forEach(function(s) {
+      var visible = s.querySelectorAll('.entry:not([style*="display: none"])');
+      s.style.display = visible.length === 0 ? 'none' : '';
+    });
+    searchCount.textContent = '找到 ' + matched + ' 篇匹配文章';
+    searchCount.classList.add('active');
+  });
+
+  // 回到顶部按钮显示/隐藏
+  var btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 600) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+});
 </script>
 
 </body>
