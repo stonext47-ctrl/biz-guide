@@ -194,9 +194,9 @@ body {
 }
 .tab-btn {
   flex: 1;
-  padding: 12px 0;
+  padding: 12px 4px;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--text-muted);
   border: none;
@@ -516,6 +516,150 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* ========== 阿福场景Tab ========== */
+/* <!-- 板块：阿福产品与品牌 --> */
+.afu-scene-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+.afu-scene-card.expanded {
+  box-shadow: var(--shadow-md);
+}
+.afu-scene-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.afu-scene-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+}
+.afu-scene-info {
+  flex: 1;
+  min-width: 0;
+}
+.afu-scene-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.afu-scene-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.afu-scene-count {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.08);
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+}
+.afu-scene-arrow {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  transition: transform var(--transition);
+}
+.afu-scene-card.expanded .afu-scene-arrow {
+  transform: rotate(90deg);
+}
+.afu-scene-body {
+  display: none;
+  padding: 0 16px 16px;
+  border-top: 1px solid var(--border-light);
+}
+.afu-scene-card.expanded .afu-scene-body {
+  display: block;
+  animation: slideDown 0.3s ease;
+}
+.afu-insight-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.afu-insight-item:last-child {
+  border-bottom: none;
+}
+.afu-insight-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+.afu-insight-source {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 8px;
+}
+.afu-insight-quote {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 10px 14px;
+  background: var(--bg-quote);
+  border-left: 3px solid var(--quote-border);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 8px;
+}
+.afu-insight-apply {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.06);
+  border: 1px solid rgba(46, 125, 50, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+.afu-insight-apply::before {
+  content: '\1F3AF\0020';
+}
+.afu-tab-intro {
+  padding: 16px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  background: linear-gradient(135deg, rgba(46,125,50,0.04), rgba(193,123,46,0.04));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  text-align: center;
+  line-height: 1.7;
+}
+.afu-tab-intro strong {
+  color: var(--text);
+}
+
 /* ========== 回到顶部 ========== */
 /* <!-- 板块：回到顶部 --> */
 .back-top {
@@ -608,6 +752,7 @@ body {
 <div class="tab-nav">
   <button class="tab-btn active" data-tab="person" onclick="switchTab('person')">按人物</button>
   <button class="tab-btn" data-tab="category" onclick="switchTab('category')">按类型</button>
+  <button class="tab-btn" data-tab="afu" onclick="switchTab('afu')">阿福产品与品牌</button>
 </div>
 
 <!-- 板块：内容区 -->
@@ -618,6 +763,9 @@ body {
 
   <!-- 按类型 -->
   <div class="tab-panel" id="panelCategory"></div>
+
+  <!-- 阿福产品与品牌 -->
+  <div class="tab-panel" id="panelAfu"></div>
 
 </div>
 
@@ -851,6 +999,470 @@ function renderCategoryPanel(filter) {
 }
 
 // ============================================================
+// 阿福产品与品牌 — 6大场景数据
+// ============================================================
+const AFU_SCENES = [
+  {
+    id: 'persuade',
+    icon: '🧠',
+    name: '用户为什么不体检？怎么说服？',
+    desc: '用认知偏误和人性洞察破解体检决策障碍',
+    items: [
+      {
+        title: '心理否认：人们否认自己可能有健康问题',
+        source: '芒格 · 简单的、避免痛苦的心理否认',
+        quote: '人们对坏消息的本能反应是否认现实。当心理否认被触发时，人会用虚构的世界替代真实的世界，以避免面对痛苦的事实。',
+        apply: '直接说"你可能得癌了"会触发更强的否认。有效策略是绕过否认——不说"你有风险"，说"做个检查让自己安心"；把体检从"发现问题"重新定义为"确认没问题"，降低心理防御。'
+      },
+      {
+        title: '损失厌恶：人怕失去比渴望得到更强烈',
+        source: '芒格 · 被剥夺超级反应倾向',
+        quote: '人对失去已有事物的痛苦，远超获得等量新事物的快乐。即便只是面临失去的威胁，也会引发非理性的过度反应。',
+        apply: '"限时优惠""名额仅剩XX"精准利用了剥夺反应。更高级的做法：先让用户"拥有"一个健康方案（个性化推荐的体检套餐），然后提示"此方案24小时后失效"。营销话术从"现在开始体检"改为"别错过这个最佳筛查年龄段"。'
+      },
+      {
+        title: '社会认同：别人在做，我也应该做',
+        source: '芒格 · 社会认同倾向',
+        quote: '当一个人不确定自己该怎么做时，他会自动参考周围人的行为，并倾向于模仿多数人的选择。',
+        apply: '体检决策高度依赖社会认同。企业团检的说服力远超个人营销，因为"公司都安排了"就是最强社会证据。个人场景中，"附近XX人最近预约了这个套餐"的实时数据比任何文案都有效。'
+      },
+      {
+        title: '人性懒惰：用户不会主动寻找健康信息',
+        source: '张小龙 · 饭否语录',
+        quote: '人已经懒到，你不把文章推送到我桌面上，并且打开好了，字体合适，长度合适，有朋友的推荐语，我就不会阅读了。',
+        apply: '体检内容必须以最低摩擦的方式出现在用户面前。不要期待用户主动搜索"体检攻略"，而是在他们刷短视频、看朋友圈时精准推送。内容形态要简短、视觉化、一眼能看懂。'
+      },
+      {
+        title: '人性恐惧：恐惧驱动逃避，而非行动',
+        source: '张小龙 · 2019微信公开课',
+        quote: '产品做的一切都在满足用户的虚荣、热闹、逃避、贪恋。人的本性包含恐惧，而恐惧更多时候驱动逃避，而非面对。',
+        apply: '恐吓营销（"不体检会死"）触发的是逃避而非行动。更好的框架是把体检包装为"掌控感"——"聪明人都在做例行检查""做完体检的感觉是：终于不用担心了"。把恐惧转化为掌控的渴望。'
+      },
+      {
+        title: '认知四层：95%的人不知道自己不知道',
+        source: '傅盛 · 所谓成长就是认知升级',
+        quote: '认知有四种状态：不知道自己不知道（95%的人）→ 知道自己不知道 → 知道自己知道 → 不知道自己知道。绝大多数人困在第一层。',
+        apply: '大部分不体检的人处于"不知道自己不知道"的状态——他们不知道自己的身体可能有隐患。内容的首要任务是制造认知冲击："你以为自己健康，但80%的早期癌症患者在确诊前自我感觉良好"。'
+      },
+      {
+        title: '过度乐观：这种事不会发生在我身上',
+        source: '芒格 · 过度乐观倾向',
+        quote: '人类天生倾向于高估自己的能力和运气，低估风险和困难。这种倾向在涉及自身健康时尤为强烈。',
+        apply: '年轻用户群体过度乐观最严重。针对25-35岁用户的营销不能用"疾病风险"开头。更好的切入点是"数据驱动的生活方式"——把体检包装成一种"量化自我"的行为，而非"防病"的行为。'
+      },
+      {
+        title: '自视过高：觉得自己的生活方式很健康',
+        source: '芒格 · 自视过高的倾向',
+        quote: '每个人都觉得自己高于平均水平——更聪明、更健康、更有判断力。这种过高的自我评价让人忽视真实风险。',
+        apply: '与其正面挑战（会引发防御），不如用数据制造"认知裂缝"："80%的早期癌症患者在确诊前自我感觉良好"——让事实而非你的话来打破过高的自我评价。也可以反向利用：让用户觉得"选择体检"是一个聪明的、高于常人的决策。'
+      },
+      {
+        title: '避免不一致性：从不体检的人很难被说服',
+        source: '芒格 · 避免不一致性倾向',
+        quote: '人一旦做出决定或形成习惯，就倾向于保持一致，即使新证据表明应该改变。这种倾向让人抗拒改变已有的行为模式。',
+        apply: '"从不体检"已成为一种身份认同。硬说教无效，策略是用小切口打破一致性：先做一个免费的单项筛查，或者填一个"健康风险评估"。一旦做了第一步，一致性倾向反而会推动他们继续做完整体检。'
+      },
+      {
+        title: '回馈倾向：先给价值，再提出请求',
+        source: '芒格 · 回馈倾向',
+        quote: '当别人给予你帮助或好处时，你会自动产生回报对方的冲动。这种回馈冲动深植于人类进化的互惠本能中。',
+        apply: '先给用户价值——免费的健康知识、免费的风险评估、免费的体检指南。这些"礼物"在用户心中积累回馈压力。当你推荐付费服务时，用户会因为"欠了你的"而更容易接受。关键是"礼物"必须真诚有价值，而非伪装成服务的销售。'
+      }
+    ]
+  },
+  {
+    id: 'content',
+    icon: '✍️',
+    name: '怎么写出好的健康内容？',
+    desc: '从PG写作课到张小龙人性洞察的内容方法论',
+    items: [
+      {
+        title: '有用性 = 正确 × 重要 × 新颖 × 强度',
+        source: 'PG · How to Write Usefully',
+        quote: 'Useful writing makes claims that are as strong as they can be made without becoming false. 有用的写作，是把论点推到尽可能强，恰好不越过虚假的边界。',
+        apply: '写健康科普时用"乘法公式"自检：这条信息是否真实（有文献支撑）？是否重要（影响多少人的健康决策）？是否有新意（不是人人都知道的常识）？是否表述得足够清晰有力？四项全过才值得发。'
+      },
+      {
+        title: '简单写作的力量：用简单的词，写简单的句子',
+        source: 'PG · Write Simply',
+        quote: 'The easier something is to read, the more deeply readers will engage with it. 一篇文章越容易读，读者就越能深入地参与其中。',
+        apply: '健康内容的天然障碍是"专业术语"。把"糖化血红蛋白偏高"翻译成"你过去三个月的平均血糖太高了"——用日常语言写，让初中文化水平的用户也能看懂并行动。'
+      },
+      {
+        title: '不要害怕说出强论点',
+        source: 'PG · How to Write Usefully',
+        quote: 'Strength and qualification are like the accelerator and clutch. You adjust the strength up or down to produce the highest-quality version that is still true.',
+        apply: '比如"90%的人不需要每年做全身CT"——只要有数据支撑，强表述比含糊的"因人而异"对读者更有用。用限定词标明适用条件，但不要把论点稀释到无意义。'
+      },
+      {
+        title: '用户转发不是因为文章好，而是因为满足人性需求',
+        source: '张小龙 · 饭否语录',
+        quote: '产品做的一切都在满足用户的虚荣、热闹、逃避、贪恋。用户转发一篇文章，不是因为文章好，而是因为转发这个动作满足了他的某种人性需求。',
+        apply: '体检内容的传播设计要考虑转发动机：用户转发"体检报告这样看"是因为展示自己懂健康（虚荣）；转发"带父母体检攻略"是因为展示自己孝顺（人设推广）。设计内容时先想：用户转发这条的理由是什么？'
+      },
+      {
+        title: '流通正在取代内容本身',
+        source: '张小龙 · 饭否语录',
+        quote: '流通正在取代内容本身，mp3取代唱片，微博取代书本。信息的分发方式比信息本身更重要。',
+        apply: '一篇90分的体检科普如果分发做到位，效果远超一篇100分但没人看到的文章。在短视频平台，前3秒的hook比内容深度更决定传播。健康内容创作者要花50%精力在"怎么让人看到"上。'
+      },
+      {
+        title: '产品做加法是本能，做减法是能力',
+        source: '张小龙 · 饭否语录',
+        quote: '一个产品，要加多少的功能，才能成为一个垃圾产品啊！',
+        apply: '一篇体检科普塞太多信息点，用户反而什么都记不住。每篇内容只解决一个问题：要么讲清楚"尿酸高怎么办"，要么讲清楚"甲状腺结节要不要手术"。信息密度适中、结论明确、行动清晰。'
+      },
+      {
+        title: '好奇心驱动的标题比焦虑驱动的标题更持久',
+        source: '芒格 · 好奇心倾向',
+        quote: '好奇心是人类进化中最独特的馈赠之一。它驱动人类去探索、学习、理解未知世界。',
+        apply: '"你的肝脏每天处理多少毒素？""为什么日本人胃癌筛查率是中国的5倍？"——好奇心驱动的标题比焦虑驱动的标题有更长的内容生命周期，因为人分享好奇，但回避焦虑。'
+      },
+      {
+        title: '体检报告解读是"未被写出的文章"',
+        source: 'PG · How to Write Usefully',
+        quote: 'Most essays are still unwritten... The internet is to publishing roughly what the printing press was five centuries ago. If you have something to say, this is the golden age of essay writing.',
+        apply: '大多数人不知道如何读懂自己的体检报告，这就是PG说的"未被写出的文章"。把专业知识翻译成普通人能用的决策信息，本身就是在填补空白。这个领域有巨大的未开发空间。'
+      },
+      {
+        title: '马化腾的用户导向：不要用你的想法替代用户感受',
+        source: '马化腾 · 产品方法论',
+        quote: '产品经理最大的错误是用自己的感受替代用户的感受。你觉得"这个功能很有用"，但用户可能根本不需要。',
+        apply: '健康内容创作者常犯的错误是"我觉得用户应该知道这个"。要回到用户搜索词、评论区问题、咨询记录去找真实需求。用户问的最多的问题，就是最好的选题。'
+      },
+      {
+        title: 'N条清单式写作：降低阅读门槛',
+        source: 'PG · The List of N Things',
+        quote: '清单式文章之所以受欢迎，是因为它给读者一个明确的预期：我知道这篇文章有多长、结构是什么、随时可以停下来。',
+        apply: '"体检报告必看的5项指标""30岁前要做的8个检查"——清单格式天然降低健康内容的阅读门槛。用户不需要从头读到尾，随时可以跳到自己关心的那条。'
+      }
+    ]
+  },
+  {
+    id: 'brand',
+    icon: '💎',
+    name: '品牌应该讲什么？',
+    desc: '从乔布斯价值观营销到段永平本分哲学',
+    items: [
+      {
+        title: '品牌营销的核心是价值观，不是产品参数',
+        source: '乔布斯 · Think Different 1997内部演讲',
+        quote: 'Nike卖鞋，但广告里从不提气垫技术和为什么比锐步好。Nike赞美伟大的运动员，赞美伟大的体育精神——这就是他们的身份。',
+        apply: '健康内容不应只讲"甲状腺功能五项是什么"。要讲的是"关心自己身体的人，活出了什么样的人生"——传递价值观而非知识点。阿福品牌的灵魂声明可以是"让每个人都能读懂自己的体检报告"或"相信预防比治疗更有尊严"。'
+      },
+      {
+        title: '赞美用户而非教育用户',
+        source: '乔布斯 · Think Different',
+        quote: 'Think Different不是在说苹果多好，而是在赞美那些疯狂到以为自己能改变世界的人——然后让消费者觉得"苹果是我的同类"。',
+        apply: '不要居高临下做"健康教育"，而是赞美那些认真对待体检报告的人、带父母去体检的人、因为早发现而改变命运的人。让用户觉得"阿福是我的同类"——一群认真对待健康的聪明人。'
+      },
+      {
+        title: '"Got Milk?"思维：制造缺失感',
+        source: '乔布斯 · Think Different',
+        quote: '好的品牌营销不是告诉你产品多好，而是让你意识到没有它你缺了什么。Got Milk?不说牛奶的营养成分，只制造"冰箱没牛奶"的恐慌。',
+        apply: '不说"体检多重要"（行业喊了20年没用），而是制造缺失感——"你上次体检是什么时候？"用一个问题触发行动，比100条理由更有效。'
+      },
+      {
+        title: '本分：做对的事情，而不是做容易的事情',
+        source: '段永平 · 200条思考',
+        quote: '本分就是做对的事情。做对的事情往往不是最容易的事情，但长期来看一定是最正确的选择。不诚信的生意做不长。',
+        apply: '体检行业的"本分"是什么？不过度推销加项、不用恐吓营销、报告解读实事求是不夸大。阿福如果能做到"明码标价、不推销、说真话"，就是用本分哲学建立竞争壁垒。'
+      },
+      {
+        title: 'Day 1心态：永远像创业第一天那样以客户为中心',
+        source: '贝索斯 · 1997首封股东信',
+        quote: 'We will continue to focus relentlessly on our customers. 顾客痴迷是第一原则。口碑是最有效的获客方式。',
+        apply: '把"顾客痴迷"翻译到体检场景：核心指标不是GMV，而是用户复购率和推荐率。阿福的护城河是用户信任，不是流量采买。一篇真正帮用户看懂报告的文章，胜过十篇泛泛的科普。'
+      },
+      {
+        title: '信任电池：每次互动都在充电或放电',
+        source: 'Tobi Lutke · Shopify',
+        quote: 'Tobi 提出"信任电池"概念：组织中每两个人之间都有一块信任电池，每次互动要么充电（建立信任），要么放电（消耗信任）。',
+        apply: '用户与阿福的每一个触点（内容、客服、报告解读、APP体验）都在给"品牌信任电池"充电或放电。一个设计粗糙的H5页面会让用户联想到"不专业的体检机构"。品牌建设不是一次大型campaign，而是每个触点的信任积累。'
+      },
+      {
+        title: '善良比聪明更难——健康内容的底层伦理',
+        source: '贝索斯 · 普林斯顿演讲',
+        quote: '善良比聪明更难。聪明是天赋，善良是选择。当你80岁回顾一生，你的故事不是关于你有多聪明，而是关于你做了哪些选择。',
+        apply: '不能为了流量恐吓用户（"你的指标异常可能是癌症！"），要做善良的科普——用专业能力帮用户减少焦虑，而非放大焦虑。品牌定位可以锚定"帮用户做出更好的健康选择"。'
+      },
+      {
+        title: '品牌联想绑定正面情绪',
+        source: '芒格 · 受简单联想影响的倾向',
+        quote: '可口可乐的广告永远不会出现死亡画面，只展示快乐场景——因为联想效应要求品牌只与正面情绪绑定。',
+        apply: '阿福的品牌联想应该绑定"聪明、主动、年轻"——让体检从"中老年人的事"变成"对自己负责的年轻人的选择"。门店环境、APP界面、客服话术，每一个触点都在建立联想。'
+      },
+      {
+        title: '不投机、做时间的朋友',
+        source: '黄峥 · 致股东信',
+        quote: '时代的洪流浩浩荡荡，方向难以阻挡。投机在时间面前异常愚蠢。',
+        apply: '品牌增长不追短期爆款流量，而是持续积累"体检解读"这个心智资产，让时间的复利发挥作用。每一篇高质量内容都是品牌资产的砖块。'
+      },
+      {
+        title: '诚信是无形资产',
+        source: '任正非 · 华为核心价值观',
+        quote: '诚信是华为的核心价值观。长期坚持做正确的事，短期可能看不到回报，但长期来看是唯一可持续的路径。',
+        apply: '达人内容必须保证医学信息准确性——这是品牌长期资产。一次不准确的健康信息传播造成的信任损失，可能需要100篇好内容才能弥补。'
+      }
+    ]
+  },
+  {
+    id: 'growth',
+    icon: '🚀',
+    name: '怎么选KOL？怎么做增长？',
+    desc: '从1000铁粉到社交裂变的增长方法论',
+    items: [
+      {
+        title: '1000个铁杆粉丝就够了',
+        source: 'KK · 1,000 True Fans',
+        quote: 'To be a successful creator you don\'t need millions. You need only thousands of true fans. A true fan is defined as a fan that will buy anything you produce.',
+        apply: '一个专注"体检报告解读"的账号不需要百万粉。如果1000个人每年因为你的内容购买了体检套餐或付费咨询，收入模型就成立。关键是从"追流量"转向"养铁粉"。'
+      },
+      {
+        title: 'KOL培育策略：20个各有1000铁粉的KOL > 1个10万粉大号',
+        source: 'KK · 1,000 True Fans',
+        quote: '真正的铁粉会买你生产的一切。直接关系意味着你不需要中间商，可以保留全部收益。',
+        apply: '与其签大量KOL追覆盖面，不如帮少量KOL各自培育1000个铁杆粉丝。提供工具和内容支持，让每个KOL都能成为"体检解读领域的独立创作者"。20个各有1000铁粉的KOL，比1个有10万粉但低互动的KOL更有价值。'
+      },
+      {
+        title: '社交裂变：用"拼"的逻辑做体检',
+        source: '黄峥 · 59条思考',
+        quote: '"拼"的本质是从需求侧交互改变推动后端供给组织方式的改变。腾讯有全中国最大的流量、投了一堆垂直电商，全没做成——因为"流量逻辑今天无法成功"。',
+        apply: '体检报告天然有社交属性（"帮我看看这个指标正常吗"）。设计"帮家人解读体检报告"的分享机制，用社交关系链驱动传播，而非纯投流。'
+      },
+      {
+        title: '高频打低频：用内容的高频接触带动体检的低频决策',
+        source: '王兴 · 100条商业思考',
+        quote: '高频业务可以向低频业务扩展，但低频很难向高频渗透。美团从高频的外卖切入，自然延伸到低频的酒旅。',
+        apply: '体检是低频行为（一年一次），但健康内容可以是高频接触（每天看）。用日常健康科普的高频内容建立用户关系，在需要体检时自然转化。内容是高频入口，体检是低频变现。'
+      },
+      {
+        title: 'KOL选择的田忌赛马：错位竞争',
+        source: '黄峥 · 59条思考 / 王兴 · 100条商业思考',
+        quote: '整体劣势可以创造局部优势赢战役。关键是"我是深圳年轻无包袱，它是上海曾经牛逼但有包袱"。',
+        apply: '不和大健康品牌抢头部医生KOL，而是找"体检焦虑型"中腰部博主（职场博主、育儿博主、中年生活博主），用错位选择获取局部优势。这些博主的粉丝更精准，合作成本更低。'
+      },
+      {
+        title: 'KOL作为"需求聚合节点"',
+        source: '黄峥 · 把资本主义倒过来',
+        quote: '如果1000个人提前表达"下个月要做全身体检"的意愿，体检机构可以给出更低的价格。先聚集需求，再谈价格。',
+        apply: '与其让KOL硬推产品，不如让KOL发起"跟我一起做X检查"的联合行动，用确定性需求换取优惠——这比单纯带货自然得多。每个KOL的粉丝群体就是一个"确定性需求池"。'
+      },
+      {
+        title: '关注核心而非边界：围绕体检解读不断扩展',
+        source: '王兴 · 100条商业思考',
+        quote: '不应该纠结于"业务边界在哪里"，而是"核心是什么"。核心足够强大，周边业务自然被吸引过来。',
+        apply: '阿福的核心是体检报告解读，围绕这个核心做内容、做KOL、做社区，不必纠结"我们是内容公司还是健康公司"。核心做到极致，其他业务自然延伸。'
+      },
+      {
+        title: '供给侧数字化是结构性机会',
+        source: '王兴 · 100条商业思考',
+        quote: '过去需求侧数字化已完成，供给侧才刚开始。供给侧的互联网化和数据化是未来十年的方向。',
+        apply: '体检行业供给侧（报告解读、医生资源、检后服务）远未数字化，这是阿福的结构性机会。用AI做标准化报告解读、用数据匹配医生资源，就是在做供给侧数字化。'
+      },
+      {
+        title: '先验证PMF，再投资制作',
+        source: 'Marc Andreessen · Product-Market Fit',
+        quote: 'Do whatever is required to get to product/market fit. If you need to ask "do we have PMF?"—you don\'t.',
+        apply: '不要先做精美的体检科普视频再看数据反馈。先用低成本内容（图文、短视频草稿）测试哪类健康话题真正有用户需求。如果某个体检解读话题自然传播很快，那就加倍投入。'
+      },
+      {
+        title: '同心圆增长模型：铁杆粉丝是你的首席营销官',
+        source: 'KK · 1,000 True Fans',
+        quote: 'True fans are your chief marketing force. They bring other fans to you.',
+        apply: '先服务好核心铁杆用户（可能就是员工、早期用户），让他们成为自发传播力量。设计裂变机制时，优先让铁杆粉丝有工具和动力去影响身边人，而非大规模投放陌生流量。'
+      }
+    ]
+  },
+  {
+    id: 'product',
+    icon: '🎯',
+    name: '怎么设计体检套餐/产品？',
+    desc: '从场景化设计到"比免费更好"的产品思维',
+    items: [
+      {
+        title: '场景化设计：不按项目分，按用户场景分',
+        source: '李想 · 创业16年的10个经验',
+        quote: '所有从业人员都不是我们想要的，因为没有任何人考虑用户的需求。产品设计的出发点是用户场景，不是行业惯例。',
+        apply: '不做50个套餐让用户选择困难，而是集中资源打造2-3个"超级套餐"，每个精准对应一类场景：30岁职场体检焦虑、50岁父母体检陪伴、备孕期体检必查。用场景化标签替代医学项目名称。'
+      },
+      {
+        title: '消费升级不是更贵，而是更公平',
+        source: '黄峥 · 59条思考',
+        quote: '消费升级不是让上海人去过巴黎人的生活，而是让安徽安庆的人有厨纸用，有好水果吃。追求高性价比的人群，他会买一个爱马仕包，也会用9.9元买一箱芒果。',
+        apply: '体检产品的"消费升级"不是堆更贵的检查项目，而是让过去"看不懂报告、不知道怎么选"的普通人能以合理价格获得清晰明确的健康信息。做健康信息的"拼多多"，把专业解读送到信息洼地。'
+      },
+      {
+        title: '获得感：用户要的不是客观最优，而是主观感受最好',
+        source: '黄峥 · 59条思考',
+        quote: '同一个人有不同消费面。核心是"匹配"——让合适的人在合适的场景下买到合适的东西。',
+        apply: '体检用户的获得感来自：报告看得懂（不是收到一个满是术语的PDF）、有人解释（不是自己百度吓自己）、知道下一步做什么（不是拿到报告就结束了）。产品设计要围绕"获得感"而非"检测项数"。'
+      },
+      {
+        title: '比免费更好的8种价值',
+        source: 'KK · Better Than Free',
+        quote: '当信息免费时，价值来自8种"生成性"属性：即时性、个性化、解读、可信性、可获取性、实体化、赞助/资助、可发现性。',
+        apply: '体检科普免费时代，阿福的变现靠叠加生成性价值：即时解读服务（Immediacy）、个性化健康方案（Personalization）、专家咨询（Interpretation）、官方认证报告（Authenticity）。叠加越多，竞争壁垒越高。'
+      },
+      {
+        title: '"解读"是体检行业最大的付费机会',
+        source: 'KK · Better Than Free',
+        quote: '基因测序将免费，但解读昂贵。当原始数据/信息免费时，为其赋予意义的解读就是核心价值。',
+        apply: '体检报告也是如此——做体检越来越便宜，但"看懂体检报告"始终是痛点。阿福的内容核心就应该是："免费的体检数据 + 付费/专业级解读 = 不可替代的价值"。'
+      },
+      {
+        title: '爆品思维：集中资源打极致单品',
+        source: '雷军 · 打造爆品的4个能力',
+        quote: '做爆品的核心是聚焦——把有限资源集中在一两个产品上，做到体验和性价比都极致。',
+        apply: '阿福可以用"爆品思维"做体检套餐：不做50个套餐让用户选择困难，而是集中资源打造2-3个"超级套餐"，做到"检测覆盖度 + 报告解读服务"的性价比远超用户预期。'
+      },
+      {
+        title: '低价是1，品质服务是0',
+        source: '刘强东 · 京东内部讲话',
+        quote: '低价是1，品质和服务是后面的0。如果没有低价这个1，后面再多的0也没有意义。',
+        apply: '体检行业的"1"可能是"价格透明+报告看得懂"。很多用户对体检的最大痛点不是品质不够好，而是"不知道自己花的钱值不值""报告看不懂也没人解释"。先把"1"做好。'
+      },
+      {
+        title: '信息效率比展示更重要',
+        source: '张一鸣 · 微博语录',
+        quote: '信息的效率比展示更重要。算法是生命体，需要调教。',
+        apply: '体检报告解读内容的核心不是"全面"而是"精准"。用户拿到报告后最需要的是：哪几项异常、什么意思、下一步做什么。砍掉90%的冗余信息，只保留用户需要的决策信息。'
+      },
+      {
+        title: '"可发现性"是内容分发的关键',
+        source: 'KK · Better Than Free',
+        quote: '健康信息过载，用户面对海量科普不知道看什么。引导注意力本身就值钱。',
+        apply: '做好"策展"——帮用户在对的时间发现对的内容（体检前看什么、拿到报告看什么、复查前看什么）——这个引导本身就是价值。阿福可以定位为"体检信息的策展人"。'
+      },
+      {
+        title: '产品即服务，需要像打磨APP一样打磨',
+        source: '张一鸣 · 微博语录',
+        quote: 'Develop a company as a product. 把公司本身当作一个产品来打磨。',
+        apply: '阿福的体检报告解读服务本身就是一个产品，需要像打磨APP一样打磨：用户旅程、触点体验、留存机制、NPS。每个环节都可以优化、测量、迭代。'
+      }
+    ]
+  },
+  {
+    id: 'ai',
+    icon: '🤖',
+    name: 'AI如何改变健康行业？',
+    desc: '从Dario的AI+医疗预测到Tobi的AI-First组织',
+    items: [
+      {
+        title: 'AI将把50-100年的生物学进步压缩到5-10年',
+        source: 'Dario Amodei · Machines of Loving Grace',
+        quote: 'AI 可以把50-100年的生物学进步压缩到5-10年内完成。传染病被可靠预防和治疗；癌症死亡率和发病率下降95%以上；人类寿命翻倍至约150岁。',
+        apply: 'Dario描绘的"AI加速早筛"未来，意味着体检行业的价值链会向"预防"端大幅迁移。阿福现在就应该布局"预防性健康管理"的内容和服务能力，而非只做事后解读。'
+      },
+      {
+        title: 'AI-First是组织基本要求，不是可选项',
+        source: 'Tobi Lutke · Shopify AI备忘录',
+        quote: 'Reflexive AI usage is now a baseline expectation at Shopify. 有效使用AI现在是每个人的基本期望——这不是建议，是要求。',
+        apply: '阿福可以直接参考Tobi的六条期望，制定自己的"AI使用基线"：所有团队成员必须掌握AI工具、新项目原型阶段必须先用AI探索、要人之前先证明AI做不了。'
+      },
+      {
+        title: 'AI体检报告解读就是"明天属性"',
+        source: '雷军 · 打造爆品的4个能力',
+        quote: '产品要有"明天属性"——让用户一旦体验过就不愿意回到昨天。',
+        apply: 'AI体检报告解读就是"明天属性"——用户一旦体验过智能解读，就不会再满足于看不懂的PDF报告。这类内容本身可以成为产品。'
+      },
+      {
+        title: '心理健康是体检行业的蓝海',
+        source: 'Dario Amodei · Machines of Loving Grace',
+        quote: 'Dario预期AI将在心理健康领域带来突破：PTSD、抑郁症、成瘾等都能被治愈或预防。每个人都能让大脑表现得更好。',
+        apply: '目前大多数体检套餐不覆盖心理评估，但AI将在这个领域带来突破。阿福可以率先探索"体检+心理筛查"的产品组合。心理健康需求庞大但供给严重不足。'
+      },
+      {
+        title: '黄仁勋的AI加速计算：健康数据处理的基础设施革命',
+        source: '黄仁勋 · AI与加速计算愿景',
+        quote: 'AI和加速计算正在改变每一个行业。医疗健康是最大的受益领域之一——从影像诊断到药物发现，计算能力的指数级提升改变了游戏规则。',
+        apply: '体检影像（CT、B超、X光）的AI辅助诊断已经进入临床应用阶段。阿福应该关注这类技术的进展，在内容中介绍"AI如何帮你看体检报告"，既有科普价值，也建立技术感品牌形象。'
+      },
+      {
+        title: '10倍产出的可能性',
+        source: 'Tobi Lutke · Shopify AI备忘录',
+        quote: 'Tobi提到有些同事已经做到了"此前认为不可能的10倍产出"。AI是一项需要刻意练习才能掌握的非显而易见的技能。',
+        apply: '在内容创作领域，AI已经可以大幅提升效率：批量生成体检指标解读初稿、快速制作科普图文、个性化回复用户咨询。关键是团队要把AI使用纳入日常工作流，而非偶尔用一下。'
+      },
+      {
+        title: '抓住AI+健康的窗口期',
+        source: '雷军 · 穿越人生低谷的感悟',
+        quote: '时机比执行力更重要。在风口上，猪都能飞起来。',
+        apply: '现在AI+健康正处于上升期，要抓住窗口期建立壁垒，而不是等到赛道拥挤再进入。率先把AI体检报告解读做成标准化服务产品，就是在建立时间壁垒。'
+      },
+      {
+        title: 'AI驱动的个性化健康方案',
+        source: 'KK · Better Than Free · Personalization',
+        quote: '个性化需要创作者和消费者之间的持续对话。最好的个性化嵌入在一段持续关系中。',
+        apply: '基于用户历年体检数据的AI个性化健康方案：对比去年和今年的变化趋势、预测未来风险、给出定制化的复查建议和生活方式调整。这种"持续对话"模式让用户每年都回来。'
+      },
+      {
+        title: 'AI时代的"红皇后赛跑"：不进步就是退步',
+        source: 'Tobi Lutke · Shopify AI备忘录',
+        quote: '在公司年增长20-40%的情况下，团队必须提升同等幅度的效率才能保持不退步。AI工具现在让这成为可能。',
+        apply: '健康内容行业也在加速——竞争对手都在用AI提升产出效率。阿福如果不把AI融入内容生产流程，很快就会在效率上被甩开。AI不是锦上添花，是生存基线。'
+      },
+      {
+        title: 'Dario的生物医学预测可转化为内容选题',
+        source: 'Dario Amodei · Machines of Loving Grace',
+        quote: '"胚胎筛查预防遗传病"和"mRNA疫苗"等具体技术方向，是未来5-10年生物医学的确定性趋势。',
+        apply: 'Dario提到的具体技术方向可以转化为面向备孕人群和年度体检人群的深度科普内容："mRNA疫苗如何改变癌症预防""基因检测能告诉你什么"——前沿但与用户相关的选题。'
+      }
+    ]
+  }
+];
+
+function renderAfuPanel(filter) {
+  const panel = document.getElementById('panelAfu');
+  let html = '';
+  const lf = (filter || '').toLowerCase();
+
+  html += '<div class="afu-tab-intro">';
+  html += '<strong>阿福产品与品牌</strong><br>';
+  html += '从28位商业领袖的洞察中提取与阿福业务直接相关的内容，按6个实战场景组织。';
+  html += '</div>';
+
+  for (const scene of AFU_SCENES) {
+    let items = scene.items;
+    if (lf) {
+      items = items.filter(i => {
+        const text = i.title + i.source + i.quote + i.apply;
+        return text.toLowerCase().includes(lf);
+      });
+    }
+    if (lf && items.length === 0) continue;
+
+    html += '<div class="afu-scene-card" data-scene="' + scene.id + '">';
+    html += '<div class="afu-scene-header" onclick="toggleCard(this.parentElement)">';
+    html += '<div class="afu-scene-icon">' + scene.icon + '</div>';
+    html += '<div class="afu-scene-info">';
+    html += '<div class="afu-scene-name">' + escapeHtml(scene.name) + '</div>';
+    html += '<div class="afu-scene-desc">' + escapeHtml(scene.desc) + '</div>';
+    html += '</div>';
+    html += '<span class="afu-scene-count">' + items.length + '</span>';
+    html += '<svg class="afu-scene-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>';
+    html += '</div>';
+
+    html += '<div class="afu-scene-body">';
+    for (const item of items) {
+      html += '<div class="afu-insight-item">';
+      html += '<div class="afu-insight-title">' + escapeHtml(item.title) + '</div>';
+      html += '<span class="afu-insight-source">' + escapeHtml(item.source) + '</span>';
+      html += '<div class="afu-insight-quote">' + escapeHtml(item.quote) + '</div>';
+      html += '<div class="afu-insight-apply">' + escapeHtml(item.apply) + '</div>';
+      html += '</div>';
+    }
+    html += '</div></div>';
+  }
+
+  if (!html || (lf && html.indexOf('afu-scene-card') === -1)) {
+    html = '<div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><p>未找到匹配的内容</p></div>';
+  }
+
+  panel.innerHTML = html;
+}
+
+// ============================================================
 // 交互
 // ============================================================
 let currentTab = 'person';
@@ -858,7 +1470,8 @@ let currentTab = 'person';
 function switchTab(tab) {
   currentTab = tab;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'panel' + tab.charAt(0).toUpperCase() + tab.slice(1)));
+  const panelMap = { person: 'panelPerson', category: 'panelCategory', afu: 'panelAfu' };
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === panelMap[tab]));
   applyFilter();
 }
 
@@ -895,6 +1508,7 @@ function applyFilter() {
   const filter = searchInput.value.trim();
   renderPersonPanel(filter);
   renderCategoryPanel(filter);
+  renderAfuPanel(filter);
 
   if (filter) {
     const lf = filter.toLowerCase();
@@ -955,6 +1569,7 @@ window.addEventListener('scroll', () => {
 document.getElementById('totalCount').textContent = ALL_ITEMS.length;
 renderPersonPanel();
 renderCategoryPanel();
+renderAfuPanel();
 
 // PWA 注册（如果支持）
 if ('serviceWorker' in navigator) {
