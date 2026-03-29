@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>商业指南</title>
+
+<!-- PWA：让网页可以"安装"到手机桌面 -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="商业指南">
+<meta name="theme-color" content="#111418">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23111418' width='100' height='100' rx='18'/><text x='50' y='68' text-anchor='middle' fill='%23fff' font-size='48' font-family='serif'>商</text></svg>">
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoi5ZWG5Lia5oyH5Y2XIiwic2hvcnRfbmFtZSI6IuWVhuS4muaMh+WNlyIsInN0YXJ0X3VybCI6Ii4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjZjRmMWVjIiwidGhlbWVfY29sb3IiOiIjMTExNDE4IiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbCw8c3ZnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgdmlld0JveD0nMCAwIDEwMCAxMDAnPjxyZWN0IGZpbGw9JyUyMzExMTQxOCcgd2lkdGg9JzEwMCcgaGVpZ2h0PScxMDAnIHJ4PScxOCcvPjx0ZXh0IHg9JzUwJyB5PSc2OCcgdGV4dC1hbmNob3I9J21pZGRsZScgZmlsbD0nJTIzZmZmJyBmb250LXNpemU9JzQ4JyBmb250LWZhbWlseT0nc2VyaWYnPuWVhjwvdGV4dD48L3N2Zz4iLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9XX0=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ========== CSS 变量 ========== */
+:root {
+  --ink: #111418;
+  --ink-soft: #2a2f38;
+  --surface: #f4f1ec;
+  --surface-warm: #ebe6dc;
+  --card: #fffdf8;
+  --card-hover: #fff;
+  --accent: #c0582a;
+  --accent-deep: #993d18;
+  --accent-glow: rgba(192,88,42,0.08);
+  --teal: #1a6b5a;
+  --teal-bg: rgba(26,107,90,0.06);
+  --blue: #2d5a8a;
+  --blue-bg: rgba(45,90,138,0.06);
+  --gold: #a08030;
+  --gold-bg: rgba(160,128,48,0.06);
+  --rose: #a03850;
+  --rose-bg: rgba(160,56,80,0.06);
+  --purple: #6a4a8a;
+  --purple-bg: rgba(106,74,138,0.06);
+  --olive: #5a6a30;
+  --olive-bg: rgba(90,106,48,0.06);
+  --steel: #4a5a6a;
+  --steel-bg: rgba(74,90,106,0.06);
+  --ember: #8a4a2a;
+  --ember-bg: rgba(138,74,42,0.06);
+  --border: #d8d0c4;
+  --border-light: #e8e2d8;
+  --text-secondary: #5a5248;
+  --text-muted: #8a847a;
+  --font-display: 'Noto Serif SC', Georgia, serif;
+  --font-body: 'Noto Sans SC', -apple-system, sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --max-w: 880px;
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.05);
+  --shadow-lg: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+/* ========== 基础重置 ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+body {
+  font-family: var(--font-body);
+  background: var(--surface);
+  color: var(--ink);
+  line-height: 1.8;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== 顶部导航栏 ========== */
+/* <!-- 板块：顶部固定导航 --> */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(244,241,236,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-light);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.topbar-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.toc-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: var(--ink);
+  color: var(--surface);
+  border: none;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.toc-btn:hover { transform: scale(1.03); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+.toc-btn svg { width: 14px; height: 14px; fill: currentColor; }
+
+/* ========== 目录抽屉 ========== */
+/* <!-- 板块：目录抽屉面板 --> */
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17,20,24,0.4);
+  z-index: 1001;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.toc-overlay.open { opacity: 1; pointer-events: auto; }
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  right: -380px;
+  width: 360px;
+  max-width: 90vw;
+  height: 100vh;
+  background: var(--ink);
+  color: #ccc;
+  z-index: 1002;
+  overflow-y: auto;
+  padding: 28px 24px 40px;
+  transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.toc-drawer.open { right: 0; }
+.toc-drawer-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 50%;
+  color: #aaa;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toc-drawer-close:hover { background: rgba(255,255,255,0.18); color: #fff; }
+.toc-drawer h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+}
+.toc-drawer a {
+  display: block;
+  color: #aab;
+  text-decoration: none;
+  padding: 8px 0;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: color 0.2s;
+}
+.toc-drawer a:hover { color: var(--accent); }
+.toc-drawer .toc-scene-num {
+  display: inline-block;
+  width: 24px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+/* ========== 主容器 ========== */
+.main {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========== 封面区域 ========== */
+/* <!-- 板块：封面 --> */
+.cover {
+  padding: 100px 0 48px;
+  text-align: center;
+  border-bottom: 3px double var(--border);
+  margin-bottom: 48px;
+}
+.cover-badge {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--accent);
+  padding: 5px 16px;
+  border-radius: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+.cover h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.cover h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.cover .sub {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto 24px;
+}
+.cover .meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+/* ========== 场景板块 ========== */
+/* <!-- 板块：场景章节 --> */
+.scene {
+  margin-bottom: 56px;
+  padding-top: 8px;
+}
+.scene-header {
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--r-lg);
+  padding: 32px 36px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.scene-header::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -20px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  opacity: 0.06;
+}
+.scene-header.s1::after { background: var(--accent); }
+.scene-header.s2::after { background: var(--teal); }
+.scene-header.s3::after { background: var(--blue); }
+.scene-header.s4::after { background: var(--gold); }
+.scene-header.s5::after { background: var(--rose); }
+.scene-header.s6::after { background: var(--purple); }
+.scene-header.s7::after { background: var(--olive); }
+.scene-header.s8::after { background: var(--steel); }
+.scene-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+.scene-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  position: relative;
+}
+.scene-header .scene-desc {
+  font-size: 14px;
+  opacity: 0.6;
+  font-weight: 300;
+  position: relative;
+}
+
+/* ========== 人物/文章卡片 ========== */
+/* <!-- 板块：文章内容卡片 --> */
+.entry {
+  background: var(--card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-md);
+  margin-bottom: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s;
+}
+.entry:hover { box-shadow: var(--shadow-lg); }
+.entry-head {
+  padding: 24px 28px 18px;
+  border-bottom: 1px solid var(--border-light);
+}
+.entry-person {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+.entry-person.c1 { color: var(--accent); }
+.entry-person.c2 { color: var(--teal); }
+.entry-person.c3 { color: var(--blue); }
+.entry-person.c4 { color: var(--gold); }
+.entry-person.c5 { color: var(--rose); }
+.entry-person.c6 { color: var(--purple); }
+.entry-person.c7 { color: var(--olive); }
+.entry-person.c8 { color: var(--steel); }
+.entry-head h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.entry-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-decoration: none;
+  word-break: break-all;
+  transition: color 0.2s;
+}
+.entry-link:hover { color: var(--accent); text-decoration: underline; }
+
+.entry-body { padding: 24px 28px 28px; }
+
+/* 子板块标签 */
+.section-tag {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-tag::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+}
+.section-tag.tag-point { color: var(--ink-soft); }
+.section-tag.tag-quote { color: var(--gold); }
+.section-tag.tag-content { color: var(--teal); }
+.section-tag.tag-afu { color: var(--accent); }
+
+/* 核心论点 */
+.points { margin-bottom: 24px; }
+.point-item {
+  padding: 10px 0 10px 18px;
+  position: relative;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+.point-item:last-child { border-bottom: none; }
+.point-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.point-item strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 14.5px;
+  margin-bottom: 2px;
+}
+
+/* 原文引用 */
+.quotes { margin-bottom: 24px; }
+blockquote {
+  background: var(--surface-warm);
+  border-left: 3px solid var(--gold);
+  padding: 14px 18px;
+  margin: 0 0 10px;
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  font-style: italic;
+}
+blockquote cite {
+  display: block;
+  font-style: normal;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* 启发板块 */
+.insight-box {
+  padding: 14px 18px;
+  border-radius: var(--r-sm);
+  margin-bottom: 10px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+.insight-box strong { color: var(--ink); }
+.insight-box.content-ins {
+  background: var(--teal-bg);
+  border: 1px solid rgba(26,107,90,0.1);
+}
+.insight-box.afu-ins {
+  background: var(--accent-glow);
+  border: 1px solid rgba(192,88,42,0.1);
+}
+
+/* 交叉引用 */
+.xref {
+  display: inline-block;
+  background: var(--surface-warm);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 4px 4px 4px 0;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+.xref:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ========== 页脚 ========== */
+/* <!-- 板块：页脚 --> */
+.page-footer {
+  text-align: center;
+  padding: 40px 0 60px;
+  border-top: 2px solid var(--border);
+  margin-top: 40px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 2;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 640px) {
+  .topbar { padding: 0 14px; }
+  .topbar-title { font-size: 12px; }
+  .cover { padding: 80px 0 36px; }
+  .scene-header { padding: 24px 22px; border-radius: var(--r-md); }
+  .entry-head { padding: 18px 18px 14px; }
+  .entry-body { padding: 18px 18px 22px; }
+  blockquote { padding: 12px 14px; }
+}
+
+/* ========== 打印优化 ========== */
+@media print {
+  .topbar, .toc-overlay, .toc-drawer { display: none !important; }
+  .entry { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+  .scene-header { break-after: avoid; }
+  body { font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 板块：顶部固定导航 -->
+<div class="topbar">
+  <span class="topbar-title">商业指南 · 8个场景 × 60篇文章</span>
+  <button class="toc-btn" onclick="toggleToc()">
+    <svg viewBox="0 0 16 16"><rect y="2" width="16" height="1.5" rx=".75"/><rect y="7" width="16" height="1.5" rx=".75"/><rect y="12" width="16" height="1.5" rx=".75"/></svg>
+    目录
+  </button>
+</div>
+
+<!-- 板块：目录抽屉面板 -->
+<div class="toc-overlay" id="tocOverlay" onclick="toggleToc()"></div>
+<nav class="toc-drawer" id="tocDrawer">
+  <button class="toc-drawer-close" onclick="toggleToc()">&times;</button>
+  <h2>8个场景导航</h2>
+  <a href="#scene-1" onclick="toggleToc()"><span class="toc-scene-num">01</span> 怎么写出好内容？</a>
+  <a href="#scene-2" onclick="toggleToc()"><span class="toc-scene-num">02</span> 用户为什么不体检？怎么说服？</a>
+  <a href="#scene-3" onclick="toggleToc()"><span class="toc-scene-num">03</span> 品牌应该讲什么？</a>
+  <a href="#scene-4" onclick="toggleToc()"><span class="toc-scene-num">04</span> 怎么选KOL / 怎么做增长？</a>
+  <a href="#scene-5" onclick="toggleToc()"><span class="toc-scene-num">05</span> 怎么定价 / 设计体检套餐？</a>
+  <a href="#scene-6" onclick="toggleToc()"><span class="toc-scene-num">06</span> 怎么带团队？</a>
+  <a href="#scene-7" onclick="toggleToc()"><span class="toc-scene-num">07</span> AI会怎么改变健康行业？</a>
+  <a href="#scene-8" onclick="toggleToc()"><span class="toc-scene-num">08</span> 怎么做长期有价值的事？</a>
+</nav>
+
+<div class="main">
+
+<!-- 板块：封面 -->
+<header class="cover">
+  <div class="cover-badge">Deep Reading Collection · 2026.03</div>
+  <h1>商业指南<em>按场景分类</em>总集</h1>
+  <p class="sub">60篇商业经典文章的深度阅读总结，按8个实战场景重新组织。每个场景下保留完整的核心论点、原文引用、内容启发与阿福业务启发。</p>
+  <p class="meta">2026-03-29 &middot; 基于10份原始报告整理 &middot; 阿福增长团队内部参考</p>
+</header>
+
+
+<!-- ============================================================ -->
+<!-- 场景一：怎么写出好内容？ -->
+<!-- ============================================================ -->
+<section class="scene" id="scene-1">
+<div class="scene-header s1">
+  <div class="scene-num">Scene 01</div>
+  <h2>怎么写出好内容？</h2>
+  <p class="scene-desc">写作方法、表达技巧、内容质量标准、用户体验</p>
+</div>
+
+<!-- PG: How to Write Usefully -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c1">保罗·格雷厄姆 Paul Graham</div>
+    <h3>如何写出有用的文章 (How to Write Usefully)</h3>
+    <a class="entry-link" href="https://paulgraham.com/useful.html" target="_blank">paulgraham.com/useful.html</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>有用性 = 正确 × 重要 × 新颖 × 强度，四者相乘</strong>一篇好文章需要同时满足真实、重要、新颖、表述坚定四个条件。任何一项为零或极低，整篇文章的价值就会大幅缩水。这不是加法关系——一篇论点很新但不重要的文章，和一篇重要但众人皆知的文章，都算不上有用。</div>
+      <div class="point-item"><strong>表述强度与限定词是油门和离合器的关系</strong>限定词（qualifier）不是软弱的表现，而是精密思考的工具。真正的写作功力在于把论点推到尽可能强，同时不越过真实的边界。</div>
+      <div class="point-item"><strong>"先松后紧"的写作流程：快速初稿 + 反复打磨</strong>Graham 的实际写作方法是先不管质量快速写出初稿，然后花大量时间删改。他描述自己会把一个句子反复读100遍以上才发布。删掉弱句比修补弱句更有效。</div>
+      <div class="point-item"><strong>有用的文章必然会惹人生气</strong>新颖意味着挑战已有认知，强度意味着不留退路。这不是写作的副作用，而是有用写作的内在代价。</div>
+      <div class="point-item"><strong>绝大多数文章尚未被写出来</strong>互联网消除了出版的守门人，但大量有价值的文章仍然没人写。写作本身是探索思想的工具——很多观点只有在写作过程中才会被发现。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"Useful writing makes claims that are as strong as they can be made without becoming false."<br>有用的写作，是把论点推到尽可能强，恰好不越过虚假的边界。</blockquote>
+      <blockquote>"Strength and qualification are like the accelerator and clutch in a car with a manual transmission."<br>表述强度和限定词就像手动挡汽车的油门和离合器。</blockquote>
+      <blockquote>"Most essays are still unwritten... This is the golden age of essay writing — if you have something to say."<br>绝大多数文章仍然没有被写出来……如果你有话要说，这就是写作的黄金时代。</blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>写健康科普时，用"乘法公式"自检：</strong>这条信息是否真实（有文献支撑）？是否重要（影响多少人的健康决策）？是否有新意（不是人人都知道的常识）？是否表述得足够清晰有力（不含糊其辞）？四项全过才值得发。</div>
+    <div class="insight-box content-ins"><strong>体检报告解读的内容天然具备"新颖性"优势：</strong>大多数人不知道如何读懂自己的体检报告，这就是 Graham 说的"未被写出的文章"。</div>
+    <div class="insight-box content-ins"><strong>不要害怕说出强论点：</strong>比如"90%的人不需要每年做全身CT"——只要有数据支撑，强表述比含糊的"因人而异"对读者更有用。</div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>内容驱动增长的核心是"有用性"而非"传播性"：</strong>阿福的体检报告解读内容如果能满足 Graham 的四个标准——真实、重要、新颖、表述有力——自然会产生口碑传播，不需要依赖标题党或情绪化套路。</div>
+    <div class="insight-box afu-ins"><strong>达人投放的内容质量评估可以用这个框架：</strong>给KOL的 brief 中加入"有用性四维度"检查，确保产出的内容不只是曝光，而是真正对观众有决策价值。</div>
+  </div>
+</article>
+
+<!-- PG: Write Simply -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c1">保罗·格雷厄姆 Paul Graham</div>
+    <h3>写得简单 (Write Simply)</h3>
+    <a class="entry-link" href="https://paulgraham.com/simply.html" target="_blank">paulgraham.com/simply.html</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>简单的文字让读者把脑力花在理解思想上，而不是解码语言</strong>理想的写作应该让文字本身近乎透明，读者直接接收到想法。读者的注意力是有限资源，简单的语言把这个资源全部留给了内容本身。</div>
+      <div class="point-item"><strong>华丽的文字不仅掩盖思想，还掩盖思想的缺失</strong>复杂的修辞让空洞的论点看起来像是深刻的思考。"在当前变革的关键窗口期，我们需要以前瞻性的战略眼光把握结构性机会"——实际上什么也没说。</div>
+      <div class="point-item"><strong>简单的文字更持久</strong>简单朴素的文字不受时代流行语和修辞风尚的影响，放到十年后读仍然清晰。追求"耐久性"本身就是一种质量标准。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"The easier something is to read, the more deeply readers will engage with it."<br>一篇文章越容易读，读者就越能深入地参与其中。</blockquote>
+      <blockquote>"Fancy writing doesn't just conceal ideas. It can also conceal the lack of them."<br>华丽的文字不仅掩盖思想，还能掩盖思想的缺失。</blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>健康内容最忌"专业感表演"：</strong>把"低密度脂蛋白胆固醇升高提示动脉粥样硬化风险增加"翻译成"坏胆固醇高了，血管容易堵"，信息量一样，到达率天壤之别。</div>
+    <div class="insight-box content-ins"><strong>简单不等于浅薄：</strong>"甲状腺结节3类，意思是95%以上的概率是良性的，定期复查就好"——这句话背后需要真正理解 TI-RADS 分级体系，但表达出来必须让完全不懂医学的人秒懂。</div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>体检报告解读产品的核心竞争力就是"翻译能力"：</strong>把医学术语翻译成决策语言。阿福的用户拿到体检报告时的焦虑和困惑，最不需要的就是又一层专业术语的加码。</div>
+  </div>
+</article>
+
+<!-- PG: Write Like You Talk -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c1">保罗·格雷厄姆 Paul Graham</div>
+    <h3>像说话一样写作 (Write Like You Talk)</h3>
+    <a class="entry-link" href="https://paulgraham.com/talk.html" target="_blank">paulgraham.com/talk.html</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>大多数人写作时会不自觉地切换到一种"书面腔"</strong>没人聊天时会用"笔"替代"写"，但书面语里到处都是这种不必要的正式化。</div>
+      <div class="point-item"><strong>复杂的想法不需要复杂的句式</strong>专家在讨论高度专业的话题时，用的也是口语化的句式结构。口语化写作是"思想的运动服"——轻便、灵活、不碍事。</div>
+      <div class="point-item"><strong>实操方法：朗读检验法</strong>Graham 自己在发布前会把文章读出声。如果一句话读出来不像正常人会说的话，就改掉。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"Informal language is the athletic clothing of ideas."<br>口语化的语言是思想的运动服。</blockquote>
+      <blockquote>"If you simply manage to write in spoken language, you'll be ahead of 95% of writers."<br>如果你能做到用口语来写作，你就已经超过了95%的写作者。</blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>给KOL写脚本时，"朗读检验法"是最直接的质量标准：</strong>达人拍视频本质就是在"说话"。如果脚本上的文字读出来不像正常人会说的话，达人要么改词（偏离Brief），要么生硬照念（观众划走）。</div>
+    <div class="insight-box content-ins"><strong>健康科普文章用"讲给朋友听"的标准来写：</strong>想象你的朋友刚拿到体检报告，问你"这个幽门螺杆菌阳性是什么意思"——你当面怎么解释的，文章就怎么写。</div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>达人投放效果的关键变量之一是"脚本口语化程度"：</strong>观众能瞬间分辨达人是在"读稿"还是在"聊天"。阿福的KOL内容如果能做到让达人拿到脚本后觉得"这就是我平时会说的话"，完播率和信任感都会提升。</div>
+  </div>
+</article>
+
+<!-- PG: Putting Ideas into Words -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c1">保罗·格雷厄姆 Paul Graham</div>
+    <h3>把想法写成文字 (Putting Ideas into Words)</h3>
+    <a class="entry-link" href="https://paulgraham.com/words.html" target="_blank">paulgraham.com/words.html</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>写作是思想的严格测试，不是思想的记录工具</strong>你以为自己想清楚了某件事，一旦动笔就会发现到处是漏洞和模糊地带。最终发表的文章里，有一半的想法是在写作过程中才产生的。</div>
+      <div class="point-item"><strong>最震撼的推论：没有写过某个主题的人，关于这个主题没有完全成型的想法</strong>未经检验的想法"感觉上"是完整的，只有写下来才会暴露问题。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"Putting ideas into words is a severe test. Half the ideas that end up in an essay will be ones you thought of while you were writing it."<br>把想法写成文字是一场严格的测试。一篇文章最终包含的想法，有一半是你在写作过程中才想到的。</blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>写作是最好的选题验证工具：</strong>觉得某个健康话题值得写？动笔试试。如果写着写着发现说不下去、逻辑断裂——说明你对这个话题的理解还不够。</div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>让团队成员定期写作是提升专业能力的最佳方式：</strong>不是为了发表，而是为了发现自己的知识盲区。比如让运营同事写一篇"为什么年轻人需要做胃镜"——写的过程会暴露出哪些知识点没吃透。</div>
+  </div>
+</article>
+
+<!-- PG: The Need to Read + List of N Things + Writing and Speaking + Post-Medium Publishing -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c1">保罗·格雷厄姆 Paul Graham</div>
+    <h3>阅读的必要性 / N条清单式写作 / 写作与演讲 / 后媒介时代的出版</h3>
+    <a class="entry-link" href="https://paulgraham.com/read.html" target="_blank">paulgraham.com（4篇合并）</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>因果链条：好的阅读 → 好的写作 → 好的思考</strong>不会写就不会想，不会读就不会写。阅读好的文章会潜移默化地教你什么是好的写作。</div>
+      <div class="point-item"><strong>清单体降低了阅读门槛，但几乎没有发现的空间</strong>清单体适合"已知知识的高效传递"，不适合"新洞察的探索"。标题一旦定下来，内容的边界就锁死了。</div>
+      <div class="point-item"><strong>好写作的核心是好想法，好演讲的核心不是</strong>不同渠道对应不同的"频率"。短视频平台是"大厅演讲"——需要更强的情绪驱动；公众号长文是"书面写作"——可以承载更精细的论证。</div>
+      <div class="point-item"><strong>消费者从来没有为"内容"付费，一直在为"介质"付费</strong>判断赢家的标准：是否利用新技术给了人们以前得不到的东西。核心问题永远是"用户得到了什么以前得不到的东西"。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"You can't think well without writing well, and you can't write well without reading well."<br>不会写就不会想，不会读就不会写。</blockquote>
+      <blockquote>"Having good ideas is most of writing well. If you know what you're talking about, you can say it in the plainest words."<br>好写作的大部分在于好想法。如果你知道自己在说什么，用最朴素的文字就行。</blockquote>
+      <blockquote>"When you see something that's taking advantage of new technology to give people something they want that they couldn't have before, you're probably looking at a winner."<br>当你看到某个东西利用新技术给了人们以前想要但得不到的东西，你大概率在看一个赢家。</blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>内容团队的"输入质量"决定"输出质量"：</strong>要写出真正有见地的内容，需要读高质量的医学科普（比如 UpToDate 的患者教育材料、Mayo Clinic 的科普页面），而不只是刷同行的推文。</div>
+    <div class="insight-box content-ins"><strong>达人内容用清单体，品牌深度内容用文章体：</strong>KOL短视频天然适合"3招教你读懂体检报告"这种清单结构。但品牌号上应该有更有深度的内容来建立专业信任。</div>
+    <div class="insight-box content-ins"><strong>达人的价值不在于"传递信息"，而在于"激励和连接"：</strong>Brief 应该给达人"连接感"的空间，而不是把他们当成信息朗读机。</div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>阿福的商业模式本质上就是 Graham 描述的"后媒介时代"逻辑：</strong>不靠卖内容本身赚钱，而是用优质内容获取用户、建立信任，然后通过体检服务和健康管理变现。内容是漏斗的入口，不是利润中心。</div>
+  </div>
+</article>
+
+<!-- 张小龙：用户心理与内容分发 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c2">张小龙</div>
+    <h3>微信四篇核心文章：用户心理、内容分发与产品克制</h3>
+    <a class="entry-link" href="https://zhuanlan.zhihu.com/p/20546860" target="_blank">饭否语录 / 2019微信公开课 / 2021微信公开课 / 微信背后的产品观</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>产品做加法是本能，做减法是能力</strong>好产品不需要说明书。一篇文章塞太多信息点，用户反而什么都记不住。</div>
+      <div class="point-item"><strong>用户本质上是懒的，产品要顺应而非对抗懒惰</strong>"人已经懒到，你不把文章推送到我桌面上，并且打开好了，字体合适，长度合适，有朋友的推荐语，我就不会阅读了。"</div>
+      <div class="point-item"><strong>流通正在取代内容本身</strong>信息的分发方式比信息本身更重要。一篇90分的文章如果分发做到位，效果远超一篇100分但没人看到的文章。</div>
+      <div class="point-item"><strong>朋友圈的本质是"人设推广"</strong>每个人发的每一条朋友圈都是精心挑选的，一定对自己的人设有利。理解"用户为什么转发"至关重要。</div>
+      <div class="point-item"><strong>内容分发的 1:2:10 法则</strong>一个人看10个关注的视频，20个朋友赞的视频和100个机器推荐的视频。健康科普属于"学习类"，最适合走朋友点赞路径。</div>
+      <div class="point-item"><strong>有趣 > 功能 > 交互 > UI</strong>体检科普最大的敌人不是不专业，而是无聊。一个有趣但不那么严谨的短视频，传播力远超一个严谨但枯燥的长文。先有趣让用户看完，再在有趣的基础上做专业。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>一个产品，要加多少的功能，才能成为一个垃圾产品啊！</blockquote>
+      <blockquote>沟通就是把自己的人设强加给对方的过程。每个人有自己的人设，希望别人接受。</blockquote>
+      <blockquote>如果微信是一个人，它一定是你最好的朋友。那么，我怎么舍得在你最好的朋友脸上，贴一个广告呢？</blockquote>
+      <blockquote>产品一定程度上是为了满足人性中的贪嗔痴。能把握住之后，产品经理应该超越其上，用产品帮助人们得以解脱。</blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>做能帮用户"推广人设"的内容：</strong>用户转发体检报告解读，不是因为内容专业，而是转发这个动作让他看起来"关注健康、有科学素养、关心家人"。</div>
+    <div class="insight-box content-ins"><strong>科普不要考验用户意志力：</strong>张小龙说"没有人愿意主动学习新知识"。健康科普要包装成"朋友告诉你的有用信息"，而不是"你应该学习的医学知识"。</div>
+    <div class="insight-box content-ins"><strong>内容做减法——一篇只讲一个点：</strong>一篇讲清楚"甲状腺结节要不要手术"比同时讲五个指标异常有效十倍。</div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>分发比内容本身更值得投入：</strong>选对达人（分发渠道）的权重应该大于打磨脚本内容本身。一个中等质量的视频给对的达人，效果好过一个精品视频给错的达人。</div>
+    <div class="insight-box afu-ins"><strong>KOL 投放 = 社交推荐的商业化：</strong>选KOL的核心标准应该是粉丝信任度，而非粉丝数量。一个粉丝真的信他的小KOL，效果好过粉丝只是看热闹的大KOL。</div>
+    <div class="insight-box afu-ins"><strong>对用户"善良"就是最好的留存策略：</strong>不要用套路留住用户——不要搞弹窗、不要搞诱导分享、不要用焦虑营销。</div>
+  </div>
+</article>
+
+<!-- 马化腾：用户体验 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c3">马化腾</div>
+    <h3>产品经理常犯的七个错误 / 10/100/1000法则 / 超越第一产品经理</h3>
+    <a class="entry-link" href="https://www.woshipm.com" target="_blank">人人都是产品经理 / 腾讯新闻</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>10/100/1000法则：</strong>每月做10个用户调查、关注100个用户博客、收集1000条用户体验反馈。"在研究用户需求上没有什么捷径可以走。"</div>
+      <div class="point-item"><strong>核心原则："不强迫用户，不为1%的需求骚扰99%的用户"</strong>功能越多不等于产品越好，克制才是产品经理最重要的品质。</div>
+      <div class="point-item"><strong>"Don't make me think"——交互上别让用户思考</strong>产品经理要把自己当成"最挑剔的用户"，坚持使用三个月一定能发现大量问题。</div>
+      <div class="point-item"><strong>口碑比营销重要——基础能力做好后再考虑推广</strong>"如果战略点没做透，用户就会失望离开，花再多精力去弥补都无济于事。"</div>
+      <div class="point-item"><strong>张小龙说"马化腾能在3秒内变成白痴级用户"</strong>QQ邮箱改版期间与张小龙来往1300+封邮件。这种极致的细节关注不是微观管理，而是产品文化的身教。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>产品经理每个月必须做10个用户调查，关注100个用户博客，收集反馈1000个用户体验。不要以为自己可以想当然地猜测用户习惯。</blockquote>
+      <blockquote>每做一件事、每加一个东西都要很谨慎地考虑，尽量不要去打扰用户。每个功能不一定要用得多才是好，而是用了的人都觉得好才是真正的好。</blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>"Don't make me think"适用于内容：</strong>标题一看就懂、结构一目了然、行动建议一步到位。</div>
+    <div class="insight-box content-ins"><strong>内容也有"隐性特性"：</strong>排版舒适度、阅读节奏、可信度信号（来源标注、数据引用）都是用户看不见但能感受到的。</div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>"口碑先于营销"：</strong>内容质量和用户满意度做好之前，不要急于扩大投放规模。</div>
+    <div class="insight-box afu-ins"><strong>"让自己变成白痴级用户"：</strong>健康内容创作者应该假设读者零医学背景，用这个视角审视每一句话是否能被看懂。</div>
+  </div>
+</article>
+
+<!-- 雷军：爆品叙事 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c4">雷军</div>
+    <h3>打造爆品的4个能力 / 穿越人生低谷的感悟</h3>
+    <a class="entry-link" href="https://finance.sina.com.cn" target="_blank">新浪财经 · 雷军口述 / 2022年度演讲</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>产品要有"明天属性"——用户一旦用过就不想放手</strong>AI体检报告解读就是"明天属性"——用户一旦体验过智能解读，就不会再满足于看不懂的PDF报告。</div>
+      <div class="point-item"><strong>洞察用户，做减法：满足80%用户的80%需求</strong>不是堆功能，而是砍掉不必要的，把最核心的需求做到极致。</div>
+      <div class="point-item"><strong>"站店"思维：走到一线去</strong>雷军去中关村站店卖软件的经历让他从"技术自嗨"转向"用户需求驱动"。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"既然这些痛苦难以回避，那我们能做的，就是直面这些痛苦，在痛苦中坚持前行，让痛苦来塑造更好的我们。"<cite>——雷军, 2022年度演讲</cite></blockquote>
+      <blockquote>"不带任何目的，学起东西来，反而特别轻松，也特别快。"<cite>——雷军</cite></blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>"站店"思维适用于内容创作：</strong>不要在办公室闭门造车，去用户真实的评论区、社群、问答平台看他们在问什么、焦虑什么，然后做对应内容。</div>
+    <div class="insight-box content-ins"><strong>"做减法"同样适用：</strong>一篇内容只解决一个核心问题（"甲状腺结节3类要不要手术？"），而不是写一篇万字百科全书。</div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>阿福可以用"爆品思维"做体检套餐：</strong>不做50个套餐让用户选择困难，而是集中资源打造2-3个"超级套餐"，每个精准对应一类人群。</div>
+  </div>
+</article>
+
+<!-- 王兴：金句写法 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c5">王兴</div>
+    <h3>饭否精选语录：碎片中的商业洞察</h3>
+    <a class="entry-link" href="https://www.digitaling.com" target="_blank">digitaling.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>微观生活与商业本质相通</strong>碎片化的生活记录展现了一个创业者如何在日常中保持观察力和好奇心。"因为琐碎，所以真实"。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>种一棵树的最好时机是十年前，其次是现在。</blockquote>
+      <blockquote>事实再一次证明，快速消费品领域，没有降价3分钱无法摧毁的品牌忠诚度。</blockquote>
+      <blockquote>一个年轻同事说"我可以学"。这四个简单的字里有无穷的力量。</blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>"因为琐碎，所以真实"：</strong>健康内容不必高大上，日常碎片化的健康记录（早餐、步数、睡眠）反而更有传播力。KOL内容也应如此：真实 > 专业。</div>
+  </div>
+</article>
+
+</section>
+
+
+<!-- ============================================================ -->
+<!-- 场景二：用户为什么不体检？怎么说服？ -->
+<!-- ============================================================ -->
+<section class="scene" id="scene-2">
+<div class="scene-header s2">
+  <div class="scene-num">Scene 02</div>
+  <h2>用户为什么不体检？怎么说服？</h2>
+  <p class="scene-desc">用户心理、决策障碍、说服策略、认知偏误</p>
+</div>
+
+<!-- 芒格25种偏误 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c2">查理·芒格 Charlie Munger</div>
+    <h3>《人类误判心理学》25种认知偏误全解析</h3>
+    <a class="entry-link" href="https://fs.blog/psychology-of-human-misjudgment/" target="_blank">Poor Charlie's Almanack · 第十一讲</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点（25种偏误中与体检决策最相关的）</div>
+    <div class="points">
+      <div class="point-item"><strong>#1 奖励和惩罚超级反应倾向：</strong>激励不仅驱动行为，还会扭曲认知。给用户提供明确的"奖励信号"：体检后获得的不只是报告，而是"掌控健康的确定感"。标题设计直接点明回报——"花300元排除10种高发癌症风险"。</div>
+      <div class="point-item"><strong>#4 避免怀疑倾向：</strong>大脑天然厌恶不确定状态。体检本质上是"消除健康不确定性"的产品。不是卖"健康管理"，而是卖"确定感"——"检查完了就不用再担心了"。</div>
+      <div class="point-item"><strong>#5 避免不一致性倾向：</strong>"从不体检"的用户很难被说服，因为不体检已经成了身份认同。策略不是说教，而是用小切口打破一致性：先做一个免费的单项筛查。一旦做了第一步，一致性倾向会推动他们继续做完整体检。</div>
+      <div class="point-item"><strong>#6 好奇心倾向：</strong>健康科普最有效的不是恐吓，而是激发好奇。"你的肝脏每天处理多少毒素？""为什么日本人胃癌筛查率是中国的5倍？"——好奇心驱动的标题比焦虑驱动的标题有更长的内容生命周期。</div>
+      <div class="point-item"><strong>#9 回馈倾向：</strong>先给用户价值，再提出请求。免费的健康知识、免费的风险评估——这些"礼物"会在用户心中积累回馈压力。这是内容营销的底层心理机制。</div>
+      <div class="point-item"><strong>#11 心理否认：</strong>这是体检行业面对的最大心理障碍。直接说"你可能得癌了"会触发更强的否认。有效策略是把体检从"发现问题"重新定义为"确认没问题"。</div>
+      <div class="point-item"><strong>#12 自视过高的倾向：</strong>用户觉得"我的生活方式很健康"正是自视过高。用数据制造"认知裂缝"："80%的早期癌症患者在确诊前自我感觉良好"。</div>
+      <div class="point-item"><strong>#13 过度乐观倾向：</strong>"这种事不会发生在我身上"是最大转化障碍。用与用户高度相似的案例打破乐观偏见："32岁、不抽烟、每周跑步三次——他确诊了早期肺结节"。</div>
+      <div class="point-item"><strong>#14 被剥夺超级反应倾向：</strong>失去某样东西带来的痛苦远大于得到。话术从"现在开始体检"改为"别错过这个最佳筛查年龄段"。</div>
+      <div class="point-item"><strong>#15 社会认同倾向：</strong>"已有XX万人完成了这项检查""你所在城市最受欢迎的套餐是XX"——社会证据是转化核心引擎。</div>
+      <div class="point-item"><strong>#16 对比错误反应倾向：</strong>先展示高价套餐（8000元），再展示推荐套餐（2000元）——后者立刻变得合理。治疗一次重病50万 vs 每年体检2000元。</div>
+      <div class="point-item"><strong>#22 权威错误影响倾向：</strong>"三甲医院主任推荐"——权威背书是健康内容转化的最强杠杆。</div>
+      <div class="point-item"><strong>#24 重视理由倾向：</strong>每一个健康建议后面都必须跟"因为"。不是"你应该做胃镜"，而是"你应该做胃镜，因为中国胃癌占全球43%，而早期胃癌的5年生存率超过90%"。</div>
+      <div class="point-item"><strong>#25 Lollapalooza倾向——多种偏误叠加：</strong>最强的转化是同时触发多个倾向。权威背书 + 社会证据 + 损失框架 + 具体理由，转化率远超只用一种。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>联邦快递的夜班分拣员按小时计薪时总是拖延，改为按班次完成量计薪后，问题立刻消失。<cite>——芒格论激励设计</cite></blockquote>
+      <blockquote>"驱动这个世界的不是贪婪，而是嫉妒。"<cite>——芒格</cite></blockquote>
+      <blockquote>一个想法或事实不会因为容易获取就更值得相信。<cite>——芒格论易得性偏误</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发：5大偏误组合</div>
+    <div class="insight-box afu-ins"><strong>组合#1 转化率最高——"权威+社会认同+理由"三重信任链：</strong>"协和医院副主任医师推荐→本月已有12,380人选择此套餐→推荐理由：覆盖40岁以上男性前5大高发癌种"。三条信息同时出现，用户几乎不需要额外说服。</div>
+    <div class="insight-box afu-ins"><strong>组合#2 拉新最强——"剥夺反应+避免怀疑+对比效应"紧迫感三角：</strong>"35-40岁是结直肠癌筛查黄金窗口，错过就进入高风险区→一次肠镜就能确认你没问题→早筛800元 vs 晚期治疗50万+"。</div>
+    <div class="insight-box afu-ins"><strong>组合#3 内容传播最广——"好奇心+易得性+联想效应"：</strong>蹭名人健康热点→设置悬念标题激发好奇→内容中建立正面联想（体检 = 聪明人的选择）。</div>
+    <div class="insight-box afu-ins"><strong>组合#4 复购率最高——"一致性+回馈+不用就忘"习惯锁定：</strong>完成首次体检后免费个性化健康建议（回馈）→每季度推送指标回顾（防遗忘）→复购时强调"你已连续体检2年"（一致性）。</div>
+    <div class="insight-box afu-ins"><strong>组合#5 企业团检最有效——"嫉妒+公平+奖惩"：</strong>"贵公司竞品已升级为高端体检福利→员工有权获得与其贡献匹配的健康保障→企业健康投入可享受税收优惠"。</div>
+  </div>
+</article>
+
+<!-- 傅盛认知三部曲 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c3">傅盛</div>
+    <h3>认知三部曲：所谓成长就是认知升级 / 管理本质就是认知管理 / 战略就是格局+破局</h3>
+    <a class="entry-link" href="https://36kr.com/p/5065824" target="_blank">36kr.com / woshipm.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>四种认知状态模型：</strong>不知道自己不知道（95%的人）→ 知道自己不知道 → 知道自己知道 → 不知道自己知道。绝大多数人困在第一层，自以为什么都知道。</div>
+      <div class="point-item"><strong>不行动的认知就是伪认知：</strong>傅盛反思自己对今日头条的判断：说了两年"内容很重要"，到2015年四季度才真正行动。</div>
+      <div class="point-item"><strong>战略三部曲：预测→破局点→All in</strong>预测是对大趋势的判断，破局点是找到与众不同的切入角度，All in是在看准后集中所有资源。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>认知，几乎是人和人之间唯一的本质差别。技能的差别是可量化的，认知的差别是本质的、不可量化的。</blockquote>
+      <blockquote>不行动的认知，就是伪认知。你以为重要和你真的认为重要，往往不是一回事。</blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>用"四种认知状态"做内容分层：</strong>大部分用户在第一层，内容的首要任务是帮他们意识到"不知道自己不知道"，制造认知冲击才有传播力。</div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>体检报告解读的本质是帮用户完成"健康认知升级"：</strong>从"不知道自己不知道身体有问题"到"知道自己该怎么做"。</div>
+  </div>
+</article>
+
+<!-- 黄峥消费者心理 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c4">黄峥</div>
+    <h3>拼多多黄峥59条思考（用户心理相关部分）</h3>
+    <a class="entry-link" href="https://zhuanlan.zhihu.com/p/423262673" target="_blank">zhuanlan.zhihu.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>人的多面性：同一个人有不同消费面</strong>一个人会买爱马仕包，也会用9.9元买一箱芒果。追求性价比是普遍需求，与财富多少无关。</div>
+      <div class="point-item"><strong>消费升级不是更贵，而是更公平</strong>让安徽安庆的人有厨纸用、有好水果吃。健康知识的最大价值不是服务已经懂体检的人，而是让从没做过体检的小城市家庭明白"体检报告各项指标意味着什么"。</div>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>同一个用户既关心"体检套餐怎么选最划算"（性价比面），也关心"甲状腺结节要不要手术"（深度专业面）。</strong>内容不要只打一个维度。</div>
+    <p style="margin-top:8px;font-size:13px;color:var(--text-muted);">黄峥的完整商业方法论详见 <a class="xref" href="#scene-4">场景四：增长策略</a> 和 <a class="xref" href="#scene-5">场景五：定价</a></p>
+  </div>
+</article>
+
+</section>
+
+
+<!-- ============================================================ -->
+<!-- 场景三：品牌应该讲什么？ -->
+<!-- ============================================================ -->
+<section class="scene" id="scene-3">
+<div class="scene-header s3">
+  <div class="scene-num">Scene 03</div>
+  <h2>品牌应该讲什么？</h2>
+  <p class="scene-desc">品牌定位、价值观传达、长期信任建设</p>
+</div>
+
+<!-- 乔布斯 Think Different -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c1">乔布斯 Steve Jobs</div>
+    <h3>品牌营销的核心是价值观（Think Different 1997 内部演讲）</h3>
+    <a class="entry-link" href="https://zhuanlan.zhihu.com/p/391609088" target="_blank">zhuanlan.zhihu.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>营销的本质是传达价值观，不是卖产品参数：</strong>"这是个复杂的世界，喧嚣的世界，我们没法让人们铭记我们。所以，我们要非常清楚——我们想让人们铭记我们什么。"</div>
+      <div class="point-item"><strong>Nike 范式：赞美使用者，而非解释产品：</strong>Nike 卖鞋，但广告从不聊技术参数——"他们赞美伟大的竞技体育和运动员"。Nike 告诉世界的不是"我们的鞋多好"，而是"我们是谁，我们代表什么"。</div>
+      <div class="point-item"><strong>苹果的灵魂：有激情的人能让世界变得更美好：</strong>Think Different 不展示任何苹果产品，而是向甘地、爱因斯坦、毕加索等改变世界的"疯子"致敬。</div>
+      <div class="point-item"><strong>品牌重建的战略逻辑：</strong>乔布斯回归时苹果濒临破产。他的策略不是先推新产品，而是先重建品牌认同。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>对我来说，营销讲的是价值观。我们要非常清楚——我们想让人们铭记我们什么，并非常清楚地把它传达出来。<cite>——Steve Jobs, 1997</cite></blockquote>
+      <blockquote>Nike的广告从来不聊产品。他们赞美伟大的竞技体育和运动员。他们表达的是：他们是谁，他们代表什么。<cite>——Steve Jobs</cite></blockquote>
+      <blockquote>只有那些疯狂到以为自己能够改变世界的人，才能真正改变世界。<cite>——Think Different</cite></blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>健康内容不要卖"体检参数"：</strong>就像Nike不聊气垫鞋的技术参数，要讲的是"关心自己身体的人，活出了什么样的人生"——传递价值观，而非知识点。</div>
+    <div class="insight-box content-ins"><strong>"Got Milk?"思维：</strong>不说"体检多重要"（行业喊了20年没用），而是制造缺失感——"你上次体检是什么时候？"</div>
+    <div class="insight-box content-ins"><strong>赞美用户而非教育用户：</strong>赞美那些认真对待体检报告的人、带父母去体检的人。让用户觉得"阿福是我的同类"。</div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>品牌先于产品：</strong>阿福在规模化之前，需要先回答"我们是谁、我们代表什么"——是"让每个人都能读懂自己的体检报告"？还是"相信预防比治疗更有尊严"？找到这个灵魂声明。</div>
+    <div class="insight-box afu-ins"><strong>KOL选择的价值观标准：</strong>不按粉丝量选KOL，而是按价值观对齐度选。找那些真正相信"预防医学改变命运"的创作者。</div>
+  </div>
+</article>
+
+<!-- 段永平 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c2">段永平</div>
+    <h3>200条思考：本分、做对的事、不做不对的事</h3>
+    <a class="entry-link" href="https://36kr.com/p/2060114940874370" target="_blank">36kr.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>"本分"的完整含义：不是老实，是自我要求体系：</strong>本分 = 要求自己而不是要求别人。"不赚人便宜"实现真正双赢。"如果赚的是本分钱，你会睡得好，身体好会活得长，最后还是会赚到很多钱。"</div>
+      <div class="point-item"><strong>"不做不对的事" > "做对的事"：</strong>企业应有长长的 Stop Doing List。"往往不做什么才是决定成功的最重要因素"。</div>
+      <div class="point-item"><strong>"敢为天下后，后中争先"：</strong>进入时机是产品成长期与成熟期之间。不做第一个吃螃蟹的人，但要做把螃蟹做成满汉全席的人。</div>
+      <div class="point-item"><strong>护城河 = 能够长期维持的差异化：</strong>差异化是用户需要但竞争对手满足不了的东西。追求"更健康、更长久"而非更大。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>如果你赚的是本分钱，你会睡得好。身体好会活得长，最后还是会赚到很多钱的。最重要的是，不本分赚钱的人其实不快乐。</blockquote>
+      <blockquote>很多人太注意所谓成功人士都干了啥，就是不注意他们不干啥。往往不干什么，才是决定成功的最重要因素。</blockquote>
+      <blockquote>能够长期维持的差异化就是护城河。差异化是用户需要但竞争对手满足不了的东西。</blockquote>
+    </div>
+    <div class="section-tag tag-content">内容创作启发</div>
+    <div class="insight-box content-ins"><strong>"Stop Doing List"比"To Do List"更重要：</strong>内容团队应先明确"什么内容绝不做"（低俗擦边、虚假承诺、同质化搬运），再决定做什么。</div>
+    <div class="insight-box content-ins"><strong>段永平的表达方式本身就是好内容的范本：</strong>极简、具体、不装，"说人话"的商业智慧比学术包装更有传播力。</div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>"本分"哲学直接适用于健康行业：</strong>不夸大体检价值、不制造恐慌焦虑、不做虚假承诺——这本身就是最强的品牌差异化。</div>
+    <div class="insight-box afu-ins"><strong>护城河思考：</strong>阿福的"用户需要但竞争对手满足不了的东西"是什么？是体检场景的深度理解？还是内容与服务的衔接能力？</div>
+  </div>
+</article>
+
+<!-- 贝索斯 Day1 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c3">贝索斯 Jeff Bezos</div>
+    <h3>Amazon 1997首封股东信 / 善良比聪明更难（普林斯顿演讲）</h3>
+    <a class="entry-link" href="https://aboutamazon.com" target="_blank">aboutamazon.com / 36kr中文全文</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>长期主义高于短期利润：</strong>所有决策以长期市场领导地位为锚点。他把这封信附在此后每一年的股东信里，持续二十多年。</div>
+      <div class="point-item"><strong>顾客痴迷是第一原则：</strong>"We will continue to focus relentlessly on our customers." 口碑是最有效的获客方式。</div>
+      <div class="point-item"><strong>"善良比聪明更难"：</strong>"聪明是一种天赋，善良是一种选择。天赋易得，而选择难做。"人生的质量最终由一连串选择决定。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"We will continue to make investment decisions in light of long-term market leadership considerations rather than short-term profitability."<cite>——Jeff Bezos, 1997 Letter</cite></blockquote>
+      <blockquote>"聪明是一种天赋，善良是一种选择。天赋易得——毕竟它们与生俱来，而选择难做。"<cite>——Jeff Bezos, 2010 Princeton</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>品牌定位可以锚定"帮用户做出更好的健康选择"：</strong>这比"最便宜的体检"或"最全的套餐"更有长期品牌资产。</div>
+    <div class="insight-box afu-ins"><strong>"善良比聪明更难"是健康内容的底层伦理：</strong>不能为了流量恐吓用户，要做善良的科普——用专业能力帮用户减少焦虑，而非放大焦虑。</div>
+    <p style="margin-top:8px;font-size:13px;color:var(--text-muted);">贝索斯的飞轮效应和长期主义详见 <a class="xref" href="#scene-8">场景八：长期有价值的事</a></p>
+  </div>
+</article>
+
+<!-- 达利欧/任正非 透明信任 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c4">任正非</div>
+    <h3>华为核心价值观 / 与美国学者咖啡对话：以客户为中心与极度透明</h3>
+    <a class="entry-link" href="https://www.huxiu.com" target="_blank">虎嗅网 / 知乎收录版</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>"华为命中注定是为客户而存在的，除了客户，华为没有存在的任何理由"：</strong>不能为客户创造价值的部门、流程和人员都是多余的。</div>
+      <div class="point-item"><strong>"100%没有后门"——用透明回应质疑：</strong>面对美国禁令，任正非直接承诺"愿与各国签无后门协议"，把争议从政治层面拉回技术层面。</div>
+      <div class="point-item"><strong>短期会痛，长期有信心——战略定力的公开表达：</strong>坦承"销售收入将下降300亿美元"，但同时预判"2021年公司将重新焕发勃勃生机"。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>华为命中注定是为客户而存在的，除了客户，华为没有存在的任何理由。为客户服务是华为存在的唯一理由。</blockquote>
+      <blockquote>人类社会最主要的目的是创造财富，使更多人摆脱贫穷。社会一定是要合作共赢的。</blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>品牌遇到舆论危机时，"承认短期痛、给出长期信心"的沟通模型比"一切都好"的公关话术有效得多。</strong></div>
+    <div class="insight-box afu-ins"><strong>定价和服务的透明度直接建立信任壁垒：</strong>体检行业的常见投诉——"为什么同样的项目价格差这么多"——本质上是公平感被侵犯。"明码标价、不推销"就是最强的品牌差异化。</div>
+    <p style="margin-top:8px;font-size:13px;color:var(--text-muted);">任正非的团队管理方法论详见 <a class="xref" href="#scene-6">场景六：怎么带团队</a></p>
+  </div>
+</article>
+
+<!-- Tobi 信任电池 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c5">Tobi Lutke (Shopify CEO)</div>
+    <h3>AI-First 全员备忘录中的"信任电池"理念</h3>
+    <a class="entry-link" href="https://twitter.com/toaboré" target="_blank">X/Twitter 原帖 + BetaKit</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>"有效使用AI现在是Shopify每个人的基本期望"：</strong>这不是建议，是要求。Tobi把AI使用从"可选"升级为"强制"。</div>
+      <div class="point-item"><strong>要人之前先证明AI做不了：</strong>任何团队在申请增加人力之前，必须先展示为什么AI无法完成这项工作。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"Using AI effectively is now a fundamental expectation of everyone at Shopify."<cite>——Tobi Lutke, 2025.04</cite></blockquote>
+    </div>
+    <p style="margin-top:8px;font-size:13px;color:var(--text-muted);">Tobi 的 AI 组织变革详见 <a class="xref" href="#scene-7">场景七：AI改变健康行业</a>；团队管理详见 <a class="xref" href="#scene-6">场景六</a></p>
+  </div>
+</article>
+
+</section>
+
+
+<!-- ============================================================ -->
+<!-- 场景四：怎么选KOL / 怎么做增长？ -->
+<!-- ============================================================ -->
+<section class="scene" id="scene-4">
+<div class="scene-header s4">
+  <div class="scene-num">Scene 04</div>
+  <h2>怎么选KOL / 怎么做增长？</h2>
+  <p class="scene-desc">增长策略、KOL筛选、流量到留量、社交裂变</p>
+</div>
+
+<!-- KK 1000 True Fans -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c1">凯文·凯利 Kevin Kelly</div>
+    <h3>1,000 True Fans（1000个铁杆粉丝）</h3>
+    <a class="entry-link" href="https://kk.org/thetechnium/1000-true-fans/" target="_blank">kk.org</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>1000个铁杆粉丝足以养活一个创作者：</strong>核心公式：1,000 true fans × $100/年 = $100,000。"True fan"是"会开200英里车去听你唱歌"的人。</div>
+      <div class="point-item"><strong>直接关系是关键：去掉中间商</strong>现代技术让创作者可以直接与粉丝建立联系，保留全部收入。</div>
+      <div class="point-item"><strong>同心圆结构：铁杆粉丝是营销引擎</strong>铁杆粉丝的热情是"your chief marketing force for the ordinary fans"——他们自发传播，带来更多普通粉丝。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>A true fan is defined as a fan that will buy anything you produce. These diehard fans will drive 200 miles to see you sing; they will buy the hardback and paperback and audible versions of your book.<cite>——Kevin Kelly</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>KOL培育策略：</strong>与其签大量KOL追覆盖面，不如帮少量KOL各自培育1000个铁杆粉丝。20个各有1000铁粉的KOL，比1个有10万粉但低互动的KOL更有价值。</div>
+    <div class="insight-box afu-ins"><strong>同心圆增长模型：</strong>先服务好核心铁杆用户，让他们成为"chief marketing force"自发传播。设计裂变机制时，优先让铁杆粉丝有工具和动力去影响身边人。</div>
+  </div>
+</article>
+
+<!-- 黄峥社交裂变 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c2">黄峥</div>
+    <h3>拼多多的匹配逻辑与"拼"的社交裂变 / 把"资本主义"倒过来</h3>
+    <a class="entry-link" href="https://zhuanlan.zhihu.com/p/423262673" target="_blank">zhuanlan.zhihu.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>匹配逻辑 vs 流量逻辑：</strong>淘宝是搜索→海量SKU（流量逻辑）；拼多多是推荐→有限SKU（匹配逻辑）。通过拼团集中流量到有限商品，形成规模后反向定制。</div>
+      <div class="point-item"><strong>"拼"不是营销工具，而是新交互方式：</strong>"拼"的本质是从需求侧交互改变推动后端供给组织方式的改变。腾讯有全中国最大的流量、投了一堆垂直电商，全没做成——因为"流量逻辑今天无法成功"。</div>
+      <div class="point-item"><strong>错位竞争与田忌赛马：</strong>整体劣势可创造局部优势赢战役。淘宝搜索是核心，任何改革都意味弱化搜索；但搜索在拼多多只是极小场景。</div>
+      <div class="point-item"><strong>"反向保险"：穷人也能向富人出售确定性：</strong>1000个消费者联合表达购买意愿，工厂因获得需求确定性愿意给出30%折扣。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>拼多多的存在本身就是一种模式，你可以说我low，但你无法忽视我。淘宝是流量逻辑，拼多多是匹配逻辑。<cite>——黄峥</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>错位竞争：</strong>如果丁香医生是"淘宝"（搜索逻辑、海量科普内容），阿福可以做"拼多多"——不比内容多，比匹配准。在体检解读这个垂直点上做到极致。</div>
+    <div class="insight-box afu-ins"><strong>"拼"的逻辑做社交裂变：</strong>体检报告天然有社交属性（"帮我看看这个指标正常吗"）。设计"帮家人解读体检报告"的分享机制，用社交关系链驱动传播。</div>
+    <div class="insight-box afu-ins"><strong>KOL策略的田忌赛马：</strong>不和大健康品牌抢头部医生KOL，而是找"体检焦虑型"中腰部博主（职场博主、育儿博主、中年生活博主），用错位选择获取局部优势。</div>
+    <div class="insight-box afu-ins"><strong>KOL作为"需求聚合节点"：</strong>每个KOL的粉丝群体就是一个"确定性需求池"。与其让KOL硬推产品，不如让KOL发起"跟我一起做X检查"的联合行动。</div>
+  </div>
+</article>
+
+<!-- 王兴 高频打低频 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c3">王兴</div>
+    <h3>100条商业思考：核心万有引力、高频打低频</h3>
+    <a class="entry-link" href="https://www.thepaper.cn/newsDetail_forward_21815158" target="_blank">thepaper.cn</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>"关注核心而非边界"——万有引力类比：</strong>核心足够强大，周边业务自然被吸引过来。这解释了美团从团购到外卖到酒旅的扩张逻辑。</div>
+      <div class="point-item"><strong>过去需求侧数字化已完成，供给侧才刚开始：</strong>体检行业供给侧（报告解读、医生资源、检后服务）远未数字化，这是阿福的结构性机会。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>真正"极度渴望成功"且"愿付非凡代价"的人很少。成功路上并不拥挤，因为能坚持的人真的不多。</blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>"关注核心而非边界"：</strong>阿福的核心是体检报告解读，围绕这个核心做内容、做KOL、做社区，不必纠结"我们是内容公司还是健康公司"。</div>
+  </div>
+</article>
+
+<!-- 王慧文 供需匹配 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c4">王慧文</div>
+    <h3>清华产品课：需求篇——Needs / Requirements / Demand</h3>
+    <a class="entry-link" href="https://www.jianshu.com/p/db544518ea5d" target="_blank">jianshu.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>Needs / Requirements / Demand 必须区分：</strong>用户几乎不会直接说出自己的 Needs，说出来的多是 Demand 或 Requirement。</div>
+      <div class="point-item"><strong>伟大需求的两个特征：</strong>一是人们说"不可能实现"；二是人们说"根本没有这个需求"。第三个追问是"为什么是现在"。</div>
+      <div class="point-item"><strong>需求突破的"闪电"模型：</strong>需求端强度增长 + 供给端可行性提升，两股力量交汇时击穿障碍。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>所有伟大需求都面临两个质疑：一是"这不可能实现"，二是"根本没这个需求"。遇到更讲道理的人，还会问第三个问题：为什么是现在？</blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>阿福的"体检报告解读"需求正好符合闪电模型：</strong>需求端（健康焦虑上升）和供给端（AI解读能力提升）两股力量正在交汇。</div>
+    <div class="insight-box afu-ins"><strong>用户说"我想看体检科普"（Requirement）不等于真正的Needs：</strong>真正的Needs可能是"消除体检报告带来的焦虑感"，内容形式和调性会完全不同。</div>
+  </div>
+</article>
+
+<!-- 纳瓦尔 杠杆 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c5">纳瓦尔 Naval Ravikant</div>
+    <h3>如何不靠运气致富：杠杆与专属知识</h3>
+    <a class="entry-link" href="https://www.thepaper.cn" target="_blank">澎湃新闻 / ginonotes.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>四种杠杆：劳动力→资本→代码→媒体：</strong>代码和媒体是新时代杠杆——边际成本为零、无需许可。新富阶层几乎都是代码或媒体杠杆的受益者。</div>
+      <div class="point-item"><strong>专属知识（Specific Knowledge）：</strong>无法通过培训获得，只能在真正兴趣中深度积累。"如果社会可以培训你获得某种技能，它也可以培训别人替代你。"</div>
+      <div class="point-item"><strong>第四种运气——打造独特个性让运气主动找上你：</strong>个人品牌的最高境界，对应品牌建设的最高目标：让用户主动搜索阿福，而非被动被推荐。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>追求财富而非金钱或地位。财富是在你睡觉的时候依然能为你赚钱的资产。</blockquote>
+      <blockquote>依靠出租时间不可能致富，你必须拥有股权——一个企业的一部分——才能获得财务自由。</blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>内容本身就是"边际成本为零"的媒体杠杆：</strong>一篇好内容能反复触达无限用户。内容团队应把自己定位为"杠杆制造者"而非"劳动力输出者"。</div>
+    <div class="insight-box afu-ins"><strong>"专属知识"概念可直接用于达人筛选标准：</strong>好达人拥有的是不可培训获得的表达能力和审美，而非可批量复制的脚本执行力。</div>
+  </div>
+</article>
+
+<!-- 安德森 PMF -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c6">马克·安德森 Marc Andreessen</div>
+    <h3>The Only Thing That Matters / 大公司的白鲸理论</h3>
+    <a class="entry-link" href="https://pmarchive.com/guide_to_startups_part4.html" target="_blank">pmarchive.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>市场 > 团队 > 产品：</strong>"当一个伟大团队遇上一个糟糕市场，市场赢。"</div>
+      <div class="point-item"><strong>Product-Market Fit 是唯一分水岭：</strong>BPMF阶段应该不惜一切代价追求PMF——换人、改产品、换市场都可以。</div>
+      <div class="point-item"><strong>不要建立依赖大公司合作才能成功的创业公司：</strong>大公司是白鲸——完全不可预测。把命运交给白鲸就是自杀。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>When a great team meets a lousy market, market wins. When a lousy team meets a great market, market wins.<cite>——Marc Andreessen</cite></blockquote>
+      <blockquote>Do whatever is required to get to product/market fit. Including changing out people, rewriting your product, moving into a different market.<cite>——Marc Andreessen</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>用PMF思维审视每条业务线：</strong>哪一条是"客户主动涌入、产能跟不上"的状态？那条就是有PMF的线，应该集中资源。</div>
+    <div class="insight-box afu-ins"><strong>达人投放也是在找PMF：</strong>每个达人代表一种"产品+市场"组合。快速测试不同达人类型 × 不同内容方向的组合，找到自然转化率最高的那个，然后all-in。</div>
+    <div class="insight-box afu-ins"><strong>业务模式不能依赖单一大客户/大平台：</strong>如果阿福某条业务线的收入高度依赖单一合作方，就需要警惕"白鲸风险"。</div>
+  </div>
+</article>
+
+</section>
+
+
+<!-- ============================================================ -->
+<!-- 场景五：怎么定价 / 设计体检套餐？ -->
+<!-- ============================================================ -->
+<section class="scene" id="scene-5">
+<div class="scene-header s5">
+  <div class="scene-num">Scene 05</div>
+  <h2>怎么定价 / 设计体检套餐？</h2>
+  <p class="scene-desc">产品设计、场景化、定价心理、性价比</p>
+</div>
+
+<!-- 李想：场景化产品 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c1">李想</div>
+    <h3>创业16年的10个经验 / 产品实战16讲</h3>
+    <a class="entry-link" href="https://www.woshipm.com/chuangye/335295.html" target="_blank">woshipm.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>产品标准三维度：安全感、价值感、向往感：</strong>安全感从用户真实场景出发；价值感是"同样的钱，买到对目标用户最好的功能和体验"；向往感是唤起用户心中的理想场景。</div>
+      <div class="point-item"><strong>产品服务决定销量，品牌决定利润率：</strong>丰田和大众销量接近，但丰田品牌价值是大众的5倍。</div>
+      <div class="point-item"><strong>先做好60分再去做100分：</strong>先保证基础信息准确、覆盖高频问题（60分），再追求深度解读和差异化表达（100分）。</div>
+      <div class="point-item"><strong>商业模式四步法：圈地→产品→运营→商业化</strong></div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>在市场爆发的时候是决定胜负的关键，平缓或者下滑的时候，再努力就没有用了，圈地变成了抢地。<cite>——李想</cite></blockquote>
+      <blockquote>真正的用户价值，一定是帮助用户解决了某个问题，或者完成了某项任务，而不是仅仅提供了某个简单的功能。<cite>——李想</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>"安全感、价值感、向往感"三维度可直接映射体检套餐：</strong>安全感=告诉用户"你的指标正常"；价值感="同样的钱做到最好的检查组合"；向往感="检后的健康生活方式"。</div>
+    <div class="insight-box afu-ins"><strong>体检报告解读的价值不是"给你看每个指标的含义"（功能），而是"告诉你接下来该做什么"（解决问题）。</strong></div>
+  </div>
+</article>
+
+<!-- 黄峥 便宜vs获得感 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c2">黄峥</div>
+    <h3>把"资本主义"倒过来 / 2020致股东信</h3>
+    <a class="entry-link" href="https://zhuanlan.zhihu.com/p/352488291" target="_blank">zhuanlan.zhihu.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>"反向保险"——消费者对自身购买行为的确定性对供给方有价值：</strong>1000个消费者联合表达购买意愿并付订金，工厂愿意给出30%折扣。这就是拼团模式的理论基础。</div>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>需求聚合模式：</strong>阿福可以做"体检需求聚合平台"——先用内容激发体检意识，再用社交拼团聚集需求，最后以确定性需求向体检机构谈优惠。</div>
+  </div>
+</article>
+
+<!-- KK Better Than Free -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c3">凯文·凯利 Kevin Kelly</div>
+    <h3>Better Than Free（八种比免费更好的东西）</h3>
+    <a class="entry-link" href="https://kk.org/thetechnium/better-than-fre/" target="_blank">kk.org</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>当复制免费时，不可复制的东西才值钱：</strong>"When copies are super abundant, stuff which can't be copied becomes scarce and valuable."</div>
+      <div class="point-item"><strong>八种"比免费更好"的生成性价值：</strong>即时性(Immediacy)、个性化(Personalization)、解读性(Interpretation)、可信性(Authenticity)、可达性(Accessibility)、实体化(Embodiment)、赞助性(Patronage)、可发现性(Findability)。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>Software, free. The manual, $10,000. ... Genetic stems will be so cheap they will be free, but figuring out what they mean for your life will cost more.<cite>——Kevin Kelly</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>健康领域的"Interpretation"就是最大机会：</strong>体检报告越来越便宜做，但"看懂体检报告"始终是痛点。阿福的内容核心就应该是"免费的体检数据 + 付费/专业级解读 = 不可替代的价值"。</div>
+    <div class="insight-box afu-ins"><strong>8种价值可以叠加：</strong>即时性（第一时间解读新出的体检指南变化）+ 个性化（根据你的报告定制建议）+ 可信性（有执业医师背书）+ 实体化（线下陪诊、面对面讲解）。叠加越多，竞争壁垒越高。</div>
+  </div>
+</article>
+
+<!-- 刘强东 低价是1 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c4">刘强东</div>
+    <h3>低价是1，品质服务是0</h3>
+    <a class="entry-link" href="https://www.woshipm.com" target="_blank">人人都是产品经理 / 36氪</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>"低价是1，品质和服务是两个0"：</strong>失去低价优势，其他一切竞争优势都归零。低价是前提条件——没有1，后面的0毫无意义。</div>
+      <div class="point-item"><strong>用户体验公式：（产品+服务）/ 价格 >> 1</strong></div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"如果把零售业务客户体验分成三要素——价格、品质和服务，低价是'1'，品质和服务是两个'0'。"<cite>——刘强东</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>体检行业的"1"是什么？</strong>可能是"价格透明+报告看得懂"。很多用户对体检的最大痛点不是品质不够好，而是"不知道自己花的钱值不值""报告看不懂也没人解释"。</div>
+    <div class="insight-box afu-ins"><strong>（产品+服务）/ 价格 >> 1 直接套用：</strong>体检套餐的性价比 = （检测项目覆盖度 + 报告解读服务）/ 价格，这个值要远超用户预期。</div>
+  </div>
+</article>
+
+</section>
+
+
+<!-- ============================================================ -->
+<!-- 场景六：怎么带团队？ -->
+<!-- ============================================================ -->
+<section class="scene" id="scene-6">
+<div class="scene-header s6">
+  <div class="scene-num">Scene 06</div>
+  <h2>怎么带团队？</h2>
+  <p class="scene-desc">管理、文化、招人、组织建设</p>
+</div>
+
+<!-- 张一鸣 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c1">张一鸣</div>
+    <h3>优秀年轻人的五个特质 / 微博语录与观点整理</h3>
+    <a class="entry-link" href="https://www.jiemian.com/article/802305.html" target="_blank">jiemian.com / techsir.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>延迟满足感是优秀的基石：</strong>"以大多数人满足感延迟程度之低，根本轮不到拼天赋。"真正成长快的人愿意踏实做好当下的事。</div>
+      <div class="point-item"><strong>"Develop a company as a product"——把公司当产品来做：</strong>公司本身就是创始人的作品，需要像打磨产品一样打磨组织。</div>
+      <div class="point-item"><strong>"平庸有重力，需要逃逸速度"：</strong>不是靠努力一点点就能脱离的，需要达到"逃逸速度"才能进入新轨道。</div>
+      <div class="point-item"><strong>吸引人才的四个维度：短期回报、长期回报、个人成长、精神生活</strong></div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>平庸有重力，需要逃逸速度。</blockquote>
+      <blockquote>Develop a company as a product. 像做产品一样做公司。</blockquote>
+      <blockquote>最佳状态是保持在轻度喜悦和轻度沮丧之间。</blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>"平庸有重力，需要逃逸速度"：</strong>体检内容赛道目前充斥平庸内容，阿福需要在内容质量上达到"逃逸速度"，做出明显高于行业水平的内容，才能进入增长飞轮。</div>
+    <div class="insight-box afu-ins"><strong>筛选KOL时借鉴张一鸣的五维模型：</strong>好奇心（愿意深入了解体检知识）、不甘平庸（想做出差异化内容）、延迟满足（愿意先做内容积累再变现）。</div>
+  </div>
+</article>
+
+<!-- 任正非 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c2">任正非</div>
+    <h3>致新员工书 / 华为基本法 / 在理性与平实中存活 / 一个职业管理者的责任和使命</h3>
+    <a class="entry-link" href="https://www.huxiu.com" target="_blank">华为六篇核心文本</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>"烧不死的鸟就是凤凰"——逆境筛选机制：</strong>公司永远不会提拔一个没有基层经验的人做高层管理者。</div>
+      <div class="point-item"><strong>人力资本增值优先于财务资本增值</strong></div>
+      <div class="point-item"><strong>聚焦主业，拒绝多元化诱惑：</strong>"不从事任何分散公司资源的非相关多元化经营"。</div>
+      <div class="point-item"><strong>自我批判写入"宪法"：</strong>基本法将自我批判制度化，要求组织和个人都要持续反思。</div>
+      <div class="point-item"><strong>"淡化英雄色彩"是职业化的必然之路：</strong>如一列火车从广州开到北京，有数百人搬了道岔，有数十个司机接力。不能说最后一个驾车到了北京的就是英雄。</div>
+      <div class="point-item"><strong>客户需求是产品发展的唯一路标：</strong>"卖得出去的产品才是真正的技术需求。"</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>物质资源终会枯竭，唯有文化才能生生不息。华为的文化就是奋斗文化。</blockquote>
+      <blockquote>一个职业管理者的社会责任与历史使命，就是为了完成组织目标而奋斗。缩短实现组织目标的时间，节约实现组织目标的资源，就是管理者的职业素养。</blockquote>
+      <blockquote>个人修炼当然也重要，但小草再怎么浇水也长不成大树，如果价值评价体系不正确的话，那我们的导向体系就错了。</blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>增长团队应要求所有管理者有一线投放/内容创作经验，不接受纯管理岗空降。</strong></div>
+    <div class="insight-box afu-ins"><strong>阿福可以制定自己的"内容基本法"：</strong>明确内容选题标准、审核流程、达人合作底线，用制度替代人治。</div>
+    <div class="insight-box afu-ins"><strong>价值评价体系必须正确：</strong>是以ROI/转化率评估，还是以内容质量+用户价值评估？导向决定了团队行为。</div>
+  </div>
+</article>
+
+<!-- Chesky Founder Mode -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c3">Brian Chesky (Airbnb)</div>
+    <h3>Founder Mode / Brian Chesky的逆向管理法</h3>
+    <a class="entry-link" href="https://paulgraham.com/foundermode.html" target="_blank">paulgraham.com / lennysnewsletter.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>Founder Mode 与 Manager Mode 是两种根本不同的经营方式：</strong>传统管理学教的是 Manager Mode——招好人、放权。但这套方法对创始人经营的公司往往是灾难性的。</div>
+      <div class="point-item"><strong>Skip-level 是创始人的必备工具：</strong>不是只通过直接汇报了解情况，而是深入到各个组织层级。这不是"微管理"，而是"保持对产品和业务的真实感知"。</div>
+      <div class="point-item"><strong>砍掉官僚主义，不是管理它</strong></div>
+      <div class="point-item"><strong>放弃效果广告，转向品牌驱动增长</strong></div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"Founders feel like they're being gaslit when told to abandon their instincts for traditional management structures."<cite>——Paul Graham</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>对于创始人驱动的公司，"深入细节"不等于"微管理"：</strong>核心产品体验（体检套餐设计、报告解读质量、用户服务流程）需要创始人/负责人持续深度参与。</div>
+    <div class="insight-box afu-ins"><strong>可以借鉴乔布斯的"100人年会"：</strong>定期召集最了解用户和业务的人（不一定是管理层），做战略对齐。</div>
+  </div>
+</article>
+
+<!-- 安德森招人 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c4">马克·安德森 Marc Andreessen</div>
+    <h3>个人生产力指南 / 为什么不要创业</h3>
+    <a class="entry-link" href="https://pmarchive.com/guide_to_personal_productivity.html" target="_blank">pmarchive.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>只维护三个列表 + 每天一张小卡片：</strong>Todo（必须做）、Watch（需要跟进）、Later（以后再说）。每天晚上在一张3x5索引卡上写明天的3-5个具体任务。</div>
+      <div class="point-item"><strong>头脑和心灵必须同时同意：</strong>只接受理性和情感都认同的承诺。错位的决定会制造持续的内耗和分心。</div>
+      <div class="point-item"><strong>招人极其困难，且失败率50%：</strong>即便招到人，有经验的创始人成功率也只有50%。快速验证、快速调整。</div>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>"头脑和心灵一致"是选择合作达人的标准：</strong>数据说这个达人流量好（头脑同意），但内容调性和品牌不搭（心灵不同意）——那就不合作。</div>
+  </div>
+</article>
+
+</section>
+
+
+<!-- ============================================================ -->
+<!-- 场景七：AI会怎么改变健康行业？ -->
+<!-- ============================================================ -->
+<section class="scene" id="scene-7">
+<div class="scene-header s7">
+  <div class="scene-num">Scene 07</div>
+  <h2>AI会怎么改变健康行业？</h2>
+  <p class="scene-desc">AI趋势、技术应用、未来判断</p>
+</div>
+
+<!-- Dario Machines of Loving Grace -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c1">Dario Amodei (Anthropic CEO)</div>
+    <h3>Machines of Loving Grace / The Adolescence of Technology</h3>
+    <a class="entry-link" href="https://darioamodei.com" target="_blank">darioamodei.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>"数据中心里的天才国度"：</strong>跨领域的超人智能、可以同时运行数百万实例、以人类10-100倍的速度工作。</div>
+      <div class="point-item"><strong>生物医学的"压缩21世纪"：</strong>AI可以把50-100年的生物学进步压缩到5-10年。预测：传染病被可靠预防和治疗；癌症死亡率和发病率下降95%以上；人类寿命翻倍至约150岁。</div>
+      <div class="point-item"><strong>五大风险：自主性、毁灭性武器、权力攫取、经济冲击、意义危机：</strong>AI可能在1-5年内取代一半以上的白领入门岗位。失业发生在数月内，但新岗位需要数十年才能形成。</div>
+      <div class="point-item"><strong>方法论：不末日论、承认不确定性、精准干预</strong></div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"I think their rate of discovery could be increased by 10x or more if there were a lot more talented, creative researchers."<cite>——Dario Amodei</cite></blockquote>
+      <blockquote>"Life expectancy increased almost 2x in the 20th century (from ~40 years to ~75), so it's 'on trend' that the 'compressed 21st' would double it again to 150."<cite>——Dario Amodei</cite></blockquote>
+      <blockquote>"I believe deeply in our ability to prevail, in humanity's spirit and its nobility, but we must face the situation squarely and without illusions."<cite>——Dario Amodei</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>AI体检报告解读是"压缩21世纪"在体检行业的微型实现：</strong>把原本需要专业医生花10分钟解释的报告，用AI在几秒内生成通俗解读。这是阿福应该重押的方向。</div>
+    <div class="insight-box afu-ins"><strong>心理健康是体检行业的蓝海：</strong>目前大多数体检套餐不覆盖心理评估，但AI将在这个领域带来突破。阿福可以率先探索"体检+心理筛查"的产品组合。</div>
+    <div class="insight-box afu-ins"><strong>"压缩21世纪"的叙事框架非常适合做成系列内容：</strong>每期聚焦一个病种（癌症、阿尔茨海默、遗传病），讲AI正在如何改变诊断和治疗。</div>
+  </div>
+</article>
+
+<!-- Tobi AI-First -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c2">Tobi Lutke (Shopify CEO)</div>
+    <h3>AI-First 全员备忘录：反射性AI使用是基线期望</h3>
+    <a class="entry-link" href="https://twitter.com" target="_blank">X/Twitter 原帖 + BetaKit</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>"有效使用AI现在是Shopify每个人的基本期望"——不是建议，是要求</strong></div>
+      <div class="point-item"><strong>要人之前先证明AI做不了：</strong>直接改变了组织扩张的默认逻辑——从"我们需要更多人"变成"我们需要先试试AI"。</div>
+      <div class="point-item"><strong>AI使用纳入绩效评估</strong></div>
+      <div class="point-item"><strong>"红皇后赛跑"理论：</strong>在年增长20-40%的公司里，团队必须提升同等幅度的效率才能保持不退步。有些同事已经做到了"此前认为不可能的10倍产出"。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"Before asking for more headcount and resources, teams must demonstrate why they cannot get what they want done using AI."<cite>——Tobi Lutke</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>Tobi的备忘录是组织级AI转型的最佳模板：</strong>阿福可以直接参考制定自己的"AI使用基线"：所有团队成员必须掌握AI工具、新项目原型阶段必须先用AI探索、要人之前先证明AI做不了。</div>
+    <div class="insight-box afu-ins"><strong>"红皇后赛跑"对增长团队的警示：</strong>如果竞争对手已经在用AI提效，你不用AI就不是"保持原地"，而是在退步。</div>
+  </div>
+</article>
+
+<!-- 马斯克 第一性原理 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c3">马斯克 Elon Musk</div>
+    <h3>第一性原理思维方式 / 南加州大学毕业演讲</h3>
+    <a class="entry-link" href="https://luqian.blog.caixin.com/archives/279552" target="_blank">caixin.com / madewill.com</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>第一性原理 = 回到事物不可再分的基本真相：</strong>"一层层拨开事物表象，看到里面的本质，再从本质一层层往上走。"</div>
+      <div class="point-item"><strong>特斯拉电池案例：</strong>所有人说"电池太贵了"，马斯克问：原材料市场价每千瓦时约80美元，成品卖600美元。差距不是物理定律造成的，是产业链效率造成的——那就可以打破。</div>
+      <div class="point-item"><strong>把钱花在产品上，不是广告上：</strong>"我们从不在广告上花钱，所有钱都投在了产品研发上。"</div>
+      <div class="point-item"><strong>贝索斯的"不变量"是另一种第一性原理：</strong>"未来十年什么不变？"围绕不变的东西制定商业战略。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>通过第一性原理，我把事情升华到最根本的真理，然后从最核心处开始推理。<cite>——马斯克</cite></blockquote>
+      <blockquote>未来十年什么不变？这个问题比"什么会变"重要得多。<cite>——贝索斯</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>健康内容的"第一性原理"是什么？</strong>不是流量、不是算法、不是选题。是：人对健康风险的恐惧和对确定性的渴望。所有好的健康内容都在回应这两种基本需求。</div>
+    <div class="insight-box afu-ins"><strong>用"不变量"思维选择长期内容方向：</strong>未来十年，人们一定还是害怕癌症、关心体检指标异常、想知道自己该不该复查。围绕它们建立内容资产，比追热点有长期回报。</div>
+    <div class="insight-box afu-ins"><strong>拆解成本结构：</strong>达人投放的"每个转化成本"用第一性原理拆解：内容制作成本、平台佣金、达人费、流量成本各占多少？也许自研内容+素人矩阵能像自建电池工厂一样降低成本。</div>
+  </div>
+</article>
+
+</section>
+
+
+<!-- ============================================================ -->
+<!-- 场景八：怎么做长期有价值的事？ -->
+<!-- ============================================================ -->
+<section class="scene" id="scene-8">
+<div class="scene-header s8">
+  <div class="scene-num">Scene 08</div>
+  <h2>怎么做长期有价值的事？</h2>
+  <p class="scene-desc">长期主义、反脆弱、复利思维、自我管理</p>
+</div>
+
+<!-- 巴菲特 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c1">巴菲特 Warren Buffett</div>
+    <h3>1998佛罗里达大学演讲 / 1977致股东信</h3>
+    <a class="entry-link" href="https://finance.sina.com.cn" target="_blank">新浪财经 / 辛道义博客</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>品行胜过智商——"买入同学10%"思想实验：</strong>你不会选智商最高的，而会选慷慨、诚实、把功劳归于他人的人。这些品质不是天赋，而是可以培养的行为习惯。</div>
+      <div class="point-item"><strong>习惯的枷锁——年轻时塑造自我的窗口期：</strong>"习惯的枷锁，开始的时候轻的难以察觉，到后来却重的无法摆脱。"</div>
+      <div class="point-item"><strong>护城河思维——寻找定价权：</strong>喜诗糖果从每磅1.95美元提到11美元，不需追加资本投入，因为品牌就是护城河。</div>
+      <div class="point-item"><strong>最大的错误是"该做的没做"：</strong>最大的风险不是亏损，而是错过。</div>
+      <div class="point-item"><strong>"为了得到对自己不重要的东西，甘愿拿对自己重要的东西去冒险，这简直是疯了。一生只需富一次。"</strong></div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"习惯的枷锁，开始的时候轻的难以察觉，到后来却重的无法摆脱。"<cite>——巴菲特</cite></blockquote>
+      <blockquote>"时间是好生意的朋友，烂生意的敌人。"<cite>——巴菲特</cite></blockquote>
+      <blockquote>"靠第七个最好的主意发家的人很少，靠最好的生意发家的人很多。要是你真能看懂生意，拥有的生意不应超过六个。"<cite>——巴菲特论集中投资</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>护城河 = 用户信任 + 数据积累：</strong>阿福的定价权来自"用户一想到体检报告解读，就想到阿福"，类似喜诗糖果的品牌心理份额。</div>
+    <div class="insight-box afu-ins"><strong>"最大的错误是该做的没做"——早期筛查最大的风险不是误诊，而是根本没做。</strong>这个逻辑非常适合做体检必要性的传播素材。</div>
+    <div class="insight-box afu-ins"><strong>阿福的"浮存金"是用户的健康数据：</strong>每次体检产生的数据就是低成本获取的"投资资金"，长期积累后可产生巨大价值。</div>
+  </div>
+</article>
+
+<!-- 塔勒布 反脆弱 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c2">塔勒布 Nassim Taleb</div>
+    <h3>反脆弱 / 切肤之痛 / 反脆弱核心概念详解</h3>
+    <a class="entry-link" href="https://www.econtalk.org" target="_blank">EconTalk / MBA智库百科</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>反脆弱 ≠ 强韧：系统可以从压力中受益：</strong>骨骼在承重下增强密度，肌肉在撕裂后变大——生物系统天然反脆弱。</div>
+      <div class="point-item"><strong>"Via Negativa"——做减法比做加法更智慧：</strong>不是添加更多干预，而是移除有害元素。在医疗领域尤其如此：过度用药反而制造脆弱性。</div>
+      <div class="point-item"><strong>杠铃策略——极端保守 + 极端进取：</strong>90%资金以现金持有（极端安全），10%投入高风险标的（极端进取）。损失上限10%，收益无上限。</div>
+      <div class="point-item"><strong>"别信没有风险敞口的人的建议"：</strong>决策者必须承担风险后果。KOL推荐体检套餐时，如果自己不做这个套餐，就是"无风险建议"。</div>
+      <div class="point-item"><strong>"少数支配法则"：</strong>执着的少数群体可以将偏好强加给随和的多数人。找到那群对健康极度认真的3-5%用户，满足他们的极端需求。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"Antifragility is beyond resilience or robustness. The resilient resists shocks and stays the same; the antifragile gets better."<cite>——Taleb</cite></blockquote>
+      <blockquote>"如果你的90%资金以现金形式持有，而剩下10%投资于风险极高的证券，那么你的损失不可能超过10%，而你的收益是没有上限的。"<cite>——塔勒布论杠铃策略</cite></blockquote>
+      <blockquote>"Don't tell me what you think, tell me what you have in your portfolio."<cite>——Taleb</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>阿福的业务模型应追求杠铃结构：</strong>90%资源投入确定性高的体检报告解读（稳定基本盘），10%资源试验新内容形态（高风险高回报的创新）。</div>
+    <div class="insight-box afu-ins"><strong>体检就是"主动引入小压力测试"：</strong>在身体没有症状时做筛查，用小成本发现问题，避免系统性崩溃（突发重疾）。</div>
+    <div class="insight-box afu-ins"><strong>"Via Negativa"直接适用于健康科普：</strong>与其追问"吃什么保健品"，不如先问"停止什么坏习惯"——戒烟、减糖、少久坐，减法比加法有效。</div>
+  </div>
+</article>
+
+<!-- 德鲁克 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c3">德鲁克 Peter Drucker</div>
+    <h3>Managing Oneself 管理自己 / 卓有成效的管理者</h3>
+    <a class="entry-link" href="https://hbr.org" target="_blank">Harvard Business Review / 数英网 / 知乎</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>知识工作者必须成为自己的CEO：</strong>职业生涯可能长达50年，远超任何一个组织的寿命。你不能依赖组织规划你的人生。</div>
+      <div class="point-item"><strong>回馈分析法——发现真正的长处：</strong>每当做出重要决定时记录对结果的预期，9-12个月后与实际结果比较。坚持做几年就能发现真正的优势和盲区。</div>
+      <div class="point-item"><strong>卓有成效是可以学会的习惯：</strong>管理重点从"效率"（把事做对）转向"效能"（做对的事）。</div>
+      <div class="point-item"><strong>要事优先——一次只做一件事：</strong>"打算做新业务，必须删除原有业务。"</div>
+      <div class="point-item"><strong>决策必须有反面意见：</strong>反面意见保护决策者不沦为组织奴隶、提供备选方案、激发想象力。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>"成功的职业不是规划出来的，而是当机遇来临时，已具备自我认知的人自然水到渠成的结果。"<cite>——德鲁克</cite></blockquote>
+      <blockquote>"打算做新业务，必须删除原有业务。"<cite>——德鲁克</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>"回馈分析法"可直接移植为"体检回馈分析"：</strong>每年体检前写下自己对身体状况的预期，体检后对比实际结果。坚持3年，你就比任何AI都了解自己的身体。</div>
+    <div class="insight-box afu-ins"><strong>"做自己健康的CEO"：</strong>阿福的定位可以从"体检报告解读工具"升级为"帮你成为自己健康CEO的助手"。</div>
+    <div class="insight-box afu-ins"><strong>"因事用人而非因人设事"——达人投放应该先定义内容需求，再找匹配的达人，而不是先签达人再想内容。</strong></div>
+  </div>
+</article>
+
+<!-- 纳瓦尔（引用） -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c4">纳瓦尔 Naval Ravikant</div>
+    <h3>如何不靠运气致富（长期复利视角）</h3>
+  </div>
+  <div class="entry-body">
+    <p style="font-size:13px;color:var(--text-muted);">纳瓦尔的完整杠杆理论和专属知识详见 <a class="xref" href="#scene-4">场景四：增长策略</a>。此处仅摘取与长期主义最相关的部分。</p>
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>阿福的内容资产应被视为"媒体杠杆"而非"营销成本"：</strong>每条内容都在累积品牌的复利资产。</div>
+      <div class="point-item"><strong>第四种运气（让运气主动找上来）对应品牌建设的最高目标：</strong>让用户主动搜索阿福，而非被动被推荐。</div>
+    </div>
+  </div>
+</article>
+
+<!-- Collison 进步研究 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c5">Patrick Collison (Stripe CEO)</div>
+    <h3>Fast / We Need a New Science of Progress</h3>
+    <a class="entry-link" href="https://patrickcollison.com/fast" target="_blank">patrickcollison.com / The Atlantic</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>人类曾经能以惊人速度完成伟大工程：</strong>帝国大厦410天建成、五角大楼491天、JavaScript 10天原型、Git自我托管仅4天。速度和质量不是对立的。</div>
+      <div class="point-item"><strong>1970年是分水岭——"否决权政治"的兴起导致工程速度急剧下降</strong></div>
+      <div class="point-item"><strong>"进步"本身被严重低估和研究不足：</strong>关于进步的知识被学科壁垒碎片化了。需要建立跨学科的"进步研究"。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>The Empire State Building: 410 days. The Pentagon: 491 days. JavaScript: 10 days. Git: self-hosting in 4 days.<cite>——Patrick Collison, "Fast"</cite></blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>追求"Fast"而非"Perfect"：</strong>帝国大厦410天建成不代表它质量差——它站了近100年。阿福的新业务线也应该追求快速上线、快速验证，而非在内部无限打磨。</div>
+    <div class="insight-box afu-ins"><strong>警惕内部的"否决权政治"：</strong>如果一个方案需要层层审批、多方共识才能推进，那就是在制造自己的"Van Ness公交道"（21年才建完）。</div>
+  </div>
+</article>
+
+<!-- KK 103条人生建议 -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c6">凯文·凯利 Kevin Kelly</div>
+    <h3>103条人生建议（70岁生日）</h3>
+    <a class="entry-link" href="https://kk.org/thetechnium/103-bits-of-advice-i-wish-i-had-known" target="_blank">kk.org</a>
+  </div>
+  <div class="entry-body">
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>"99%的时候，正确的时间就是现在"：</strong>大多数人因为"时机不对"错过了大多数事。</div>
+      <div class="point-item"><strong>"培养12个爱你的人，胜过1200万个喜欢你的人"：</strong>深度关系 > 广度触达。</div>
+      <div class="point-item"><strong>"习惯比灵感可靠得多"：</strong>"不要关注'变健康'这个结果，关注'成为不会错过锻炼的人'这个身份。"</div>
+      <div class="point-item"><strong>三件最需要的东西：</strong>坚持的能力 + 放弃的能力 + 找到帮你区分两者的人。</div>
+    </div>
+    <div class="section-tag tag-quote">精华引用</div>
+    <div class="quotes">
+      <blockquote>About 99% of the time, the right time is right now.</blockquote>
+      <blockquote>Cultivate 12 people who love you, because they are worth more than 12 million people who like you.</blockquote>
+      <blockquote>Three things you need: The ability to not give up something till it works, the ability to give up something that does not work, and the trust in other people to help you distinguish between the two.</blockquote>
+    </div>
+    <div class="section-tag tag-afu">阿福业务启发</div>
+    <div class="insight-box afu-ins"><strong>"习惯 > 灵感"是最好的健康内容核心信息：</strong>"成为那种不会错过体检的人"比"下次一定要体检"更有力。</div>
+    <div class="insight-box afu-ins"><strong>"99%的时候现在就是正确时间"对体检拖延症：</strong>很多人拖着不体检的理由是"等忙完这阵"——凯利70年的人生经验告诉你，现在就是对的时候。</div>
+  </div>
+</article>
+
+<!-- 贝索斯飞轮（补充引用） -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c7">贝索斯 Jeff Bezos</div>
+    <h3>Amazon 1997股东信：长期主义与飞轮效应</h3>
+  </div>
+  <div class="entry-body">
+    <p style="font-size:13px;color:var(--text-muted);">贝索斯的品牌哲学详见 <a class="xref" href="#scene-3">场景三：品牌应该讲什么</a>。此处聚焦飞轮效应。</p>
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>大胆下注、接受失败：</strong>在看到领导优势可能成立的地方，果断投入大额资源，但同时承认有些赌注不会成功。</div>
+      <div class="point-item"><strong>现金流优先于会计利润：</strong>"When forced to choose between optimizing GAAP accounting and maximizing the present value of future cash flows, we'll take the cash flows."</div>
+      <div class="point-item"><strong>体检内容应追求"口碑即增长"：</strong>一篇真正帮用户看懂报告的文章，胜过十篇泛泛的科普。</div>
+    </div>
+  </div>
+</article>
+
+<!-- 段永平（引用） -->
+<article class="entry">
+  <div class="entry-head">
+    <div class="entry-person c8">段永平</div>
+    <h3>"更健康更长久"而非更大</h3>
+  </div>
+  <div class="entry-body">
+    <p style="font-size:13px;color:var(--text-muted);">段永平的完整方法论详见 <a class="xref" href="#scene-3">场景三：品牌应该讲什么</a>。此处仅补充长期主义视角。</p>
+    <div class="section-tag tag-point">核心论点</div>
+    <div class="points">
+      <div class="point-item"><strong>追求"更健康、更长久"而非更大：</strong>增长策略应优先追求用户留存和口碑复利，而非短期流量爆发。</div>
+    </div>
+  </div>
+</article>
+
+</section>
+
+
+<!-- 板块：页脚 -->
+<footer class="page-footer">
+  <p>工具_手册_商业指南按场景分类总集_20260329.html</p>
+  <p>基于10份原始报告 · 约60篇商业经典文章深度总结 · 按8个场景重新组织</p>
+  <p>阿福增长团队内部参考 · 2026-03-29 生成</p>
+</footer>
+
+</div><!-- /.main -->
+
+<script>
+function toggleToc() {
+  document.getElementById('tocOverlay').classList.toggle('open');
+  document.getElementById('tocDrawer').classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
