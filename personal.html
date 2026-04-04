@@ -35,16 +35,27 @@
 
 /* 深色模式变量 */
 [data-theme="dark"] {
-  --bg: #1A1714;
-  --bg-card: #2C2722;
+  --bg: #141210;
+  --bg-card: #1E1B17;
   --accent: #D4A04A;
-  --accent-light: rgba(212,160,74,0.1);
+  --accent-light: rgba(212,160,74,0.08);
   --text: #E8E2D8;
-  --text-secondary: #A89E90;
+  --text-secondary: #B0A698;
   --text-muted: #7A7068;
-  --border: #3D3730;
-  --border-light: #332E28;
-  --shadow: rgba(0,0,0,0.3);
+  --border: #2E2A24;
+  --border-light: #262220;
+  --shadow: rgba(0,0,0,0.4);
+}
+/* 深色模式下主题色适度提亮 */
+[data-theme="dark"] {
+  --theme-1: #D4A020;
+  --theme-2: #3D9A6F;
+  --theme-3: #A070B8;
+  --theme-4: #5090F0;
+  --theme-5: #E07840;
+  --theme-6: #30A098;
+  --theme-7: #D03060;
+  --theme-8: #6860E0;
 }
 
 /* ===== 全局重置 ===== */
@@ -91,24 +102,25 @@ body {
 .hero-stats {
   display: flex;
   justify-content: center;
-  gap: 32px;
+  gap: 40px;
 }
 .hero-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 4px;
 }
 .hero-stat-num {
   font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 900;
   color: var(--accent);
-  line-height: 1.2;
+  line-height: 1;
 }
 .hero-stat-label {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
-  margin-top: 2px;
+  letter-spacing: 1px;
 }
 
 /* ===== Sticky 搜索栏 ===== */
@@ -144,6 +156,15 @@ body {
   position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
   color: var(--text-muted); pointer-events: none; font-size: 1rem;
 }
+.search-clear {
+  position: absolute; right: 40px; top: 50%; transform: translateY(-50%);
+  border: none; background: var(--border); color: var(--text-muted);
+  width: 20px; height: 20px; border-radius: 50%;
+  font-size: 0.65rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  min-width: 28px; min-height: 28px;
+}
+.search-clear:hover { background: var(--text-muted); color: var(--bg); }
 .search-count {
   position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
   font-size: 0.75rem; color: var(--accent); font-weight: 500;
@@ -495,7 +516,7 @@ body {
   z-index: 201; transform: translateY(100%);
   transition: transform 300ms ease;
   padding: 20px 16px;
-  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
 }
 .panel.visible { transform: translateY(0); }
 .panel-title {
@@ -558,7 +579,7 @@ body {
 
 /* ===== Toast ===== */
 .toast {
-  position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%);
+  position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
   background: var(--text); color: var(--bg);
   padding: 10px 24px; border-radius: 20px;
   font-size: 0.82rem; z-index: 300;
@@ -567,9 +588,34 @@ body {
 }
 .toast.visible { opacity: 1; }
 
+/* ===== 底部固定栏 ===== */
+.bottom-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: 48px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.bottom-bar-btn {
+  border: none; background: transparent;
+  color: var(--text-secondary); cursor: pointer;
+  font-size: 0.78rem; display: flex; align-items: center; gap: 6px;
+  min-height: 44px; padding: 0 8px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.bottom-bar-btn:hover { color: var(--accent); }
+.bottom-bar-stat {
+  font-size: 0.75rem; color: var(--text-muted);
+}
+
 /* ===== 回到顶部 ===== */
 #back-to-top {
-  position: fixed; bottom: 24px; right: 16px;
+  position: fixed; bottom: 60px; right: 16px;
   width: 44px; height: 44px; border-radius: 50%;
   background: var(--accent); color: #fff;
   border: none; cursor: pointer; z-index: 99;
@@ -665,6 +711,7 @@ mark {
   <div class="search-container">
     <span class="search-icon">&#128269;</span>
     <input class="search-input" id="search-input" type="text" placeholder="搜索标题、人物、内容..." oninput="onSearchInput()">
+    <button class="search-clear" id="search-clear" onclick="clearSearch()" style="display:none">&#10005;</button>
     <span class="search-count" id="search-count"></span>
   </div>
   <!-- 双视图 Tab -->
@@ -677,7 +724,14 @@ mark {
 <!-- 内容区域 -->
 <div id="content"></div>
 
-<!-- 回到顶部 -->
+<!-- 底部固定栏 -->
+<div class="bottom-bar">
+  <button class="bottom-bar-btn" onclick="openPanel('fav')">&#9733; 收藏夹</button>
+  <span class="bottom-bar-stat" id="bottom-stat">527 条内容</span>
+  <button class="bottom-bar-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593; 回顶部</button>
+</div>
+
+<!-- 回到顶部（滚动后出现的浮动按钮） -->
 <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
 
 <!-- 遮罩 -->
@@ -1042,13 +1096,21 @@ function toggleGroup(groupId) {
 /* 搜索输入（200ms 防抖） */
 function onSearchInput() {
   clearTimeout(searchTimer);
-  searchTimer = setTimeout(() => {
+  var val = document.getElementById("search-input").value;
+  document.getElementById("search-clear").style.display = val ? "flex" : "none";
+  searchTimer = setTimeout(function() {
     updateState({
-      searchText: document.getElementById("search-input").value.trim(),
+      searchText: val.trim(),
       expandedGroups: []
     });
     render();
   }, 200);
+}
+function clearSearch() {
+  document.getElementById("search-input").value = "";
+  document.getElementById("search-clear").style.display = "none";
+  updateState({ searchText: "", expandedGroups: [] });
+  render();
 }
 
 /* 展开/收起深度卡片详情 */
